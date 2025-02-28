@@ -134,6 +134,41 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+
+        {/* About Us Section */}
+<section className="py-16 bg-gray-100">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-8 text-black">About Us</h2>
+    
+    <div className="flex flex-col md:flex-row items-center gap-8 max-w-5xl mx-auto hover:scale-105">
+      {/* Left Side: Image */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <Image
+          src="/about-us.jpg"
+          alt="About Us"
+          width={400}
+          height={300}
+          className="rounded-lg shadow-lg object-cover"
+        />
+      </div>
+
+      {/* Right Side: Text Content */}
+      <div className="w-full md:w-1/2 text-center md:text-left">
+        <p className="text-lg text-gray-800 mb-4">
+          The Kshatriya Event 2025 is a grand gathering that celebrates culture, heritage, and leadership.
+          Our mission is to unite people from various backgrounds, foster community connections, and promote knowledge-sharing.
+        </p>
+        <p className="text-lg text-gray-800 mb-6">
+          Join us for insightful discussions, networking opportunities, and unforgettable experiences.
+        </p>
+        <Link href="/about" className="inline-block px-6 py-3 border-4 border-[#6B1313] bg-[#FAF7F2] text-black font-bold text-lg uppercase tracking-wide rounded-full shadow-md hover:bg-[#EAE0D5] transition-all">
+          Learn More
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
 
 
         {/* Call to Action */}
