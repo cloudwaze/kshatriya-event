@@ -10,8 +10,8 @@ export default function Home() {
         {/* First Hero Image Section */}
         <div className="w-full flex justify-center py-6">
           <Image
-            src="/kshatriya-hero.jpg"
-            alt="Kshatriya Hero Image"
+            src="images\kshtriyaeventimage.JPG"
+            alt="Kshatriya H Image"
             width={900}
             height={300}
             className="object-cover rounded-lg"
@@ -53,7 +53,7 @@ export default function Home() {
               {/* Speaker 1 */}
               <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center hover:scale-105">
                 <Image
-                  src="/speaker1.jpg"
+                  src="/images/Antonyshawimage.jpg"
                   alt="Anthony Shaw"
                   width={150}
                   height={150}
@@ -71,7 +71,7 @@ export default function Home() {
               {/* Speaker 2 */}
               <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center hover:scale-105">
                 <Image
-                  src="/speaker2.jpg"
+                  src="/images/PrabhakaranImage.jpg"
                   alt="Bowrna Prabhakaran"
                   width={150}
                   height={150}
@@ -97,7 +97,7 @@ export default function Home() {
             <div className="flex justify-center gap-3">
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/langdb-logo.png"
+                  src="/images/sponser1Image.jpg"
                   alt="LangDB Logo"
                   width={130}
                   height={70}
@@ -106,7 +106,7 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/cognida-logo.png"
+                  src="/images/Sponser2Image.JPG"
                   alt="Cognida.ai Logo"
                   width={130}
                   height={70}
@@ -115,7 +115,7 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/storable-logo.png"
+                  src="/images/Sponsers2Image.jpg"
                   alt="Storable Logo"
                   width={130}
                   height={70}
@@ -124,7 +124,7 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/tiger-analytics-logo.png"
+                  src="/images/Sponser4Image.jpg"
                   alt="Tiger Analytics Logo"
                   width={130}
                   height={70}
@@ -145,7 +145,7 @@ export default function Home() {
       {/* Left Side: Image */}
       <div className="w-full md:w-1/2 flex justify-center">
         <Image
-          src="/about-us.jpg"
+          src="/images/AboutusImage.png"
           alt="About Us"
           width={400}
           height={300}
