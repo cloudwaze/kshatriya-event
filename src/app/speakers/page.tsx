@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Image from 'next/image';
 
 const speakers = [
@@ -43,17 +44,17 @@ export default function SpeakersPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white pt-20">
+      <main className="min-h-screen bg-[#F9F5F0] text-[#42210B] pt-20">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold text-center mb-16">Our Speakers</h1>
+          <h1 className="text-4xl font-bold text-center mb-16 text-[#42210B]">Our Speakers</h1>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {speakers.map((speaker, index) => (
               <div
                 key={index}
-                className="bg-gray-800/50 rounded-lg overflow-hidden backdrop-blur-sm border border-gray-700 hover:border-purple-500 transition-all"
+                className="bg-white rounded-lg overflow-hidden shadow-lg border border-[#B04E2A]/20 hover:border-[#B04E2A] transition-all"
               >
-                <div className="aspect-square relative bg-gray-700">
+                <div className="aspect-square relative bg-gray-100">
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
@@ -62,16 +63,17 @@ export default function SpeakersPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h2 className="text-xl font-bold mb-2">{speaker.name}</h2>
-                  <p className="text-purple-400 mb-2">{speaker.role}</p>
-                  <p className="text-gray-300 mb-4">Topic: {speaker.topic}</p>
-                  <p className="text-gray-400 text-sm">{speaker.bio}</p>
+                  <h2 className="text-xl font-bold mb-2 text-[#42210B]">{speaker.name}</h2>
+                  <p className="text-[#B04E2A] mb-2">{speaker.role}</p>
+                  <p className="text-[#42210B] mb-4">Topic: {speaker.topic}</p>
+                  <p className="text-gray-600 text-sm">{speaker.bio}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 } 

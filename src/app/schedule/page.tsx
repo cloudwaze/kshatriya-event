@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const schedule = [
   {
@@ -9,7 +10,7 @@ const schedule = [
     professionals, and community members for an unforgettable experience.
 
     Enjoy a night filled with fine dining, insightful conversations, and cultural performances that honor our rich 
-    heritage and leadership values. The Banquet is not just an event—it’s a space to build meaningful connections, 
+    heritage and leadership values. The Banquet is not just an event—it's a space to build meaningful connections, 
     exchange ideas, and embrace the spirit of unity.
 
     🔹 Highlights:
@@ -76,64 +77,40 @@ export default function SchedulePage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#F9F5F0] text-[#42210B] pt-20">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold text-center mb-16 text-[#42210B]">
-            Event Schedule
-          </h1>
-
-          <div className="max-w-5xl mx-auto space-y-16">
-            {schedule.map((day, dayIndex) => (
-              <div key={dayIndex} className="pb-10 border-b-2 border-[#B04E2A]">
-                {/* Event Title with Date */}
-                <h2 className="text-2xl font-bold text-[#7A2E1A] mb-2">
-                  {day.title} - <span className="text-[#B04E2A]">{day.date}</span>
-                </h2>
-
-                {/* Description */}
-                <p className="text-gray-700 italic mb-4 whitespace-pre-line">{day.description}</p>
-
-                {/* Image Section */}
-                <img
-                  src={day.image}
-                  alt={day.title}
-                  className="w-full rounded-lg shadow-lg mb-6"
-                />
-
-                <div className="space-y-6">
+      <main className="min-h-screen bg-gradient-to-b from-[#FFF8F3] to-white text-[#42210B]">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">Event Schedule</h1>
+          
+          <div className="max-w-4xl mx-auto space-y-12">
+            {schedule.map((day, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-[#B04E2A]/20"
+              >
+                <h2 className="text-3xl font-bold mb-2">{day.title}</h2>
+                <p className="text-[#B04E2A] mb-6">{day.date}</p>
+                
+                <div className="space-y-4">
                   {day.events.map((event, eventIndex) => (
-                    <div
+                    <div 
                       key={eventIndex}
-                      className="flex justify-between items-center bg-[#FFF8F2] shadow-lg rounded-lg p-6 border-l-4 border-[#7A2E1A]"
+                      className="flex flex-col md:flex-row md:items-center p-4 rounded-lg bg-[#FFF8F3] hover:bg-[#FFF8F3]/80 transition-all duration-300"
                     >
-                      {/* Left Section: Event Title & Location */}
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold">{event.title}</h3>
-                        <p className="text-gray-600">{event.location}</p>
+                      <div className="md:w-48 font-mono text-[#732424]">
+                        {event.time}
                       </div>
-
-                      {/* Right Section: Time & Button */}
-                      <div className="flex flex-col items-end">
-                        <div className="text-[#7A2E1A] font-mono font-semibold">{event.time}</div>
-                        <button className="mt-2 px-4 py-2 border-2 border-[#7A2E1A] text-[#7A2E1A] font-bold rounded-full hover:bg-[#7A2E1A] hover:text-white transition">
-                          BOOK SLOT
-                        </button>
+                      <div className="md:flex-1">
+                        {event.title}
                       </div>
                     </div>
                   ))}
-                </div>
-
-                {/* Register for All Events Button (separate for each event) */}
-                <div className="text-center mt-10">
-                  <button className="px-6 py-3 bg-[#7A2E1A] text-white text-lg font-bold rounded-full hover:bg-[#B04E2A] transition">
-                    Register for All Events
-                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

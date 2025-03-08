@@ -1,165 +1,108 @@
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import Image from 'next/image';
-import Link from 'next/link';
 
-const sponsors = {
-  platinum: [
-    { name: 'Company A', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company B', logo: '/sponsors/placeholder.png', website: '#' },
-  ],
-  gold: [
-    { name: 'Company C', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company D', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company E', logo: '/sponsors/placeholder.png', website: '#' },
-  ],
-  silver: [
-    { name: 'Company F', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company G', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company H', logo: '/sponsors/placeholder.png', website: '#' },
-    { name: 'Company I', logo: '/sponsors/placeholder.png', website: '#' },
-  ],
-};
-
-const sponsorshipTiers = [
-  {
-    name: 'Platinum Sponsor',
-    price: '₹50,000',
-    benefits: [
-      'Premium logo placement on all event materials',
-      'VIP access for 5 representatives',
-      'Speaking opportunity at main event',
-      'Exhibition booth in prime location',
-      'Full-page advertisement in event brochure',
-    ],
-  },
-  {
-    name: 'Gold Sponsor',
-    price: '₹30,000',
-    benefits: [
-      'Logo placement on event materials',
-      'VIP access for 3 representatives',
-      'Exhibition booth',
-      'Half-page advertisement in event brochure',
-    ],
-  },
-  {
-    name: 'Silver Sponsor',
-    price: '₹15,000',
-    benefits: [
-      'Logo placement on event website',
-      'VIP access for 2 representatives',
-      'Quarter-page advertisement in event brochure',
-    ],
-  },
-];
-
-export default function SponsorsPage() {
+export default function Sponsors() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white pt-20">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold text-center mb-16">Our Sponsors</h1>
-
-          {/* Current Sponsors */}
-          <section className="mb-20">
-            <div className="space-y-16">
-              <div>
-                <h2 className="text-2xl font-bold text-center mb-8 text-purple-300">Platinum Sponsors</h2>
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                  {sponsors.platinum.map((sponsor, index) => (
-                    <Link
-                      key={index}
-                      href={sponsor.website}
-                      className="bg-white/10 rounded-lg p-8 flex items-center justify-center hover:bg-white/20 transition-colors"
-                    >
-                      <Image
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        width={200}
-                        height={100}
-                        className="object-contain"
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold text-center mb-8 text-yellow-300">Gold Sponsors</h2>
-                <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                  {sponsors.gold.map((sponsor, index) => (
-                    <Link
-                      key={index}
-                      href={sponsor.website}
-                      className="bg-white/10 rounded-lg p-6 flex items-center justify-center hover:bg-white/20 transition-colors"
-                    >
-                      <Image
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        width={150}
-                        height={75}
-                        className="object-contain"
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h2 className="text-2xl font-bold text-center mb-8 text-gray-300">Silver Sponsors</h2>
-                <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                  {sponsors.silver.map((sponsor, index) => (
-                    <Link
-                      key={index}
-                      href={sponsor.website}
-                      className="bg-white/10 rounded-lg p-4 flex items-center justify-center hover:bg-white/20 transition-colors"
-                    >
-                      <Image
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        width={100}
-                        height={50}
-                        className="object-contain"
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
+      <main className="min-h-screen bg-gradient-to-b from-[#FFEBEE] to-white">
+        {/* Hero Section */}
+        <section className="relative py-20 bg-gradient-to-r from-[#D32F2F] to-[#FF5252] text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Sponsors</h1>
+              <p className="text-xl mb-8">
+                Meet the organizations that make Kshatriya Event possible through their generous support.
+              </p>
+              <a
+                href="#become-sponsor"
+                className="inline-block px-8 py-4 bg-white text-[#D32F2F] font-bold rounded-full hover:bg-[#FFEBEE] transform hover:scale-105 transition-all duration-300"
+              >
+                Become a Sponsor
+              </a>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Sponsorship Opportunities */}
-          <section>
-            <h2 className="text-3xl font-bold text-center mb-12">Sponsorship Opportunities</h2>
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {sponsorshipTiers.map((tier, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-800/50 rounded-lg p-8 backdrop-blur-sm border border-gray-700"
-                >
-                  <h3 className="text-2xl font-bold mb-4">{tier.name}</h3>
-                  <div className="text-3xl font-bold text-purple-400 mb-6">{tier.price}</div>
-                  <ul className="space-y-3 text-gray-300">
-                    {tier.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-start">
-                        <span className="text-purple-400 mr-2">✓</span>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact"
-                    className="mt-8 block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+        {/* Current Sponsors */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            {/* Platinum Sponsors */}
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold text-center mb-4 text-[#D32F2F]">Platinum Sponsors</h2>
+              <div className="w-24 h-1 bg-[#FF5252] mx-auto mb-12"></div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[1, 2, 3].map((sponsor) => (
+                  <div
+                    key={sponsor}
+                    className="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 transition-all duration-300"
                   >
-                    Become a Sponsor
-                  </Link>
-                </div>
-              ))}
+                    <div className="aspect-video relative mb-4">
+                      <Image
+                        src={`/images/sponser${sponsor}Image.jpg`}
+                        alt={`Platinum Sponsor ${sponsor}`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold text-[#D32F2F] mb-2">Sponsor Name</h3>
+                      <p className="text-gray-600">Premium Technology Solutions</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
-        </div>
+
+            {/* Gold Sponsors */}
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold text-center mb-4 text-[#D32F2F]">Gold Sponsors</h2>
+              <div className="w-24 h-1 bg-[#FF5252] mx-auto mb-12"></div>
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {[1, 2, 3, 4].map((sponsor) => (
+                  <div
+                    key={sponsor}
+                    className="bg-white rounded-xl shadow-lg p-6 transform hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="aspect-video relative">
+                      <Image
+                        src={`/images/sponser${sponsor}Image.jpg`}
+                        alt={`Gold Sponsor ${sponsor}`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Become a Sponsor */}
+            <div id="become-sponsor" className="max-w-4xl mx-auto text-center bg-gradient-to-r from-[#D32F2F] to-[#FF5252] rounded-3xl p-12 text-white">
+              <h2 className="text-3xl font-bold mb-6">Become a Sponsor</h2>
+              <p className="text-lg mb-8">
+                Join us in supporting the Kshatriya Event 2025. Download our sponsorship prospectus to learn more about the benefits and opportunities.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                  href="#"
+                  className="px-8 py-4 bg-white text-[#D32F2F] font-bold rounded-full hover:bg-[#FFEBEE] transform hover:scale-105 transition-all duration-300"
+                >
+                  Download Prospectus
+                </a>
+                <a
+                  href="mailto:sponsors@kshatriyaevent.com"
+                  className="px-8 py-4 bg-[#FFEBEE] text-[#D32F2F] font-bold rounded-full hover:bg-white transform hover:scale-105 transition-all duration-300"
+                >
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer />
     </>
   );
 } 
