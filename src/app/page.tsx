@@ -10,7 +10,7 @@ export default function Home() {
         {/* First Hero Image Section */}
         <div className="w-full flex justify-center py-6">
           <Image
-            src="images\kshtriyaeventimage.JPG"
+            src="/images/Kshtriyaeventimage.JPG"
             alt="Kshatriya H Image"
             width={900}
             height={300}
@@ -53,8 +53,8 @@ export default function Home() {
               {/* Speaker 1 */}
               <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center hover:scale-105">
                 <Image
-                  src="/images/Antonyshawimage.jpg"
-                  alt="Anthony Shaw"
+                  src="/images/Antonyshawimage.JPG"
+                  alt="Antony Shaw"
                   width={150}
                   height={150}
                   className="rounded-lg"
@@ -71,8 +71,8 @@ export default function Home() {
               {/* Speaker 2 */}
               <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center hover:scale-105">
                 <Image
-                  src="/images/PrabhakaranImage.jpg"
-                  alt="Bowrna Prabhakaran"
+                  src="/images/PrabhakaranImage.JPG"
+                  alt="Prabhakaran"
                   width={150}
                   height={150}
                   className="rounded-lg"
@@ -97,8 +97,8 @@ export default function Home() {
             <div className="flex justify-center gap-3">
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/images/sponser1Image.jpg"
-                  alt="LangDB Logo"
+                  src="/images/sponser1Image.JPG"
+                  alt="Sponsor 1"
                   width={130}
                   height={70}
                   className="object-contain"
@@ -107,7 +107,7 @@ export default function Home() {
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
                   src="/images/Sponser2Image.JPG"
-                  alt="Cognida.ai Logo"
+                  alt="Sponsor 2"
                   width={130}
                   height={70}
                   className="object-contain"
@@ -115,8 +115,8 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/images/Sponsers2Image.jpg"
-                  alt="Storable Logo"
+                  src="/images/sponsers2Image.JPG"
+                  alt="Sponsor 3"
                   width={130}
                   height={70}
                   className="object-contain"
@@ -124,8 +124,8 @@ export default function Home() {
               </div>
               <div className="bg-gray-100 rounded-lg shadow-lg p-6 flex items-center justify-center w-56 h-36 hover:scale-105">
                 <Image
-                  src="/images/Sponser4Image.jpg"
-                  alt="Tiger Analytics Logo"
+                  src="/images/sponser4Image.JPG"
+                  alt="Sponsor 4"
                   width={130}
                   height={70}
                   className="object-contain"
