@@ -24,10 +24,10 @@ export default function RetrievePassPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+    <main className="min-h-screen bg-white text-black">
       <div className="container mx-auto px-4 py-16">
         <div className="mb-8">
-          <Link href="/" className="text-blue-400 hover:text-blue-300">
+          <Link href="/" className="text-[#732424] hover:text-[#9E3030]">
             ← Back to Home
           </Link>
         </div>
@@ -35,7 +35,7 @@ export default function RetrievePassPage() {
         <div className="max-w-md mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-center">Retrieve Your Pass</h1>
 
-          <form onSubmit={handleSubmit} className="space-y-6 bg-gray-800/50 p-8 rounded-lg backdrop-blur-sm border border-gray-700">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-lg border border-gray-200">
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email Address
@@ -45,7 +45,7 @@ export default function RetrievePassPage() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-colors"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 focus:border-[#732424] focus:ring-1 focus:ring-[#732424] outline-none transition-colors"
                 required
               />
             </div>
@@ -59,7 +59,7 @@ export default function RetrievePassPage() {
                 id="registrationId"
                 value={registrationId}
                 onChange={(e) => setRegistrationId(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-colors"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 focus:border-[#732424] focus:ring-1 focus:ring-[#732424] outline-none transition-colors"
                 required
               />
             </div>
@@ -67,19 +67,19 @@ export default function RetrievePassPage() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+              className="w-full bg-[#732424] hover:bg-[#9E3030] disabled:bg-[#732424]/70 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
             >
               {status === 'loading' ? 'Retrieving...' : 'Get Pass'}
             </button>
 
             {status === 'success' && (
-              <div className="text-green-400 text-center">
+              <div className="text-green-600 text-center">
                 Success! Check your email for the pass.
               </div>
             )}
 
             {status === 'error' && (
-              <div className="text-red-400 text-center">
+              <div className="text-red-600 text-center">
                 Error retrieving pass. Please check your details and try again.
               </div>
             )}

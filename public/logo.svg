@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="shield-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#732424" />
+      <stop offset="100%" stop-color="#9E3030" />
+    </linearGradient>
+  </defs>
+  <path d="M32 4 L60 12 L60 28 C60 43.464 47.464 56 32 56 C16.536 56 4 43.464 4 28 L4 12 L32 4Z" fill="url(#shield-gradient)" stroke="#FDB347" stroke-width="2" />
+  <text x="32" y="36" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#FDB347">KSH</text>
+  <path d="M24 22 L32 16 L40 22 L38 32 L32 38 L26 32 L24 22Z" fill="none" stroke="#FDB347" stroke-width="1.5" />
+</svg> 
