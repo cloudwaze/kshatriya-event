@@ -1,29 +1,94 @@
-# Kshatriya Event Website 2025
+# Kshatriya Event Website 2025 - Full Stack
 
-A modern, full-featured event website built with Next.js for the Kshatriya Event 2025. The website combines static content with dynamic admin capabilities for event management.
+A modern, full-stack event website built with Next.js frontend and FastAPI backend for the Kshatriya Event 2025. The application combines a responsive frontend with a powerful Python backend and PostgreSQL database.
+
+## Architecture Overview
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│                 │     │                 │     │                 │
+│  Next.js        │────▶│  FastAPI        │────▶│  PostgreSQL     │
+│  Frontend       │◀────│  Backend        │◀────│  Database       │
+│                 │     │                 │     │                 │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+```
 
 ## Features
 
-- **Modern, Responsive Design**: Built with Tailwind CSS for all device sizes
+- **Modern, Responsive Frontend**: Built with Next.js and Tailwind CSS
+- **RESTful API Backend**: FastAPI provides efficient and type-safe endpoints
+- **Database Integration**: PostgreSQL for reliable data persistence
+- **Docker Containerization**: Easy deployment with Docker Compose
 - **Event Registration System**: Allow attendees to register for the event
 - **Sponsor Management**: Full CRUD operations for managing event sponsors
 - **Admin Dashboard**: Secure admin panel for site management
 - **Dynamic Content**: Rotating sponsor carousel, interactive schedules
-- **SEO Optimized**: Built with best practices for search engine visibility
+- **SEO Optimized**: Frontend built with best practices for search engine visibility
+
+## Project Structure
+
+```
+kshatriya-event/                # Root project directory
+├── frontend/                   # Next.js frontend
+│   ├── public/                 # Static files
+│   ├── src/                    # Source code
+│   │   ├── app/                # Next.js app directory
+│   │   ├── components/         # React components
+│   │   └── lib/                # Frontend utilities (client-side)
+│   ├── package.json            # Frontend dependencies
+│   └── Dockerfile              # Frontend Docker configuration
+├── backend/                    # FastAPI backend
+│   ├── app/                    # Application code
+│   │   ├── api/                # API routes
+│   │   ├── core/               # Core functionality
+│   │   ├── db/                 # Database models and migrations
+│   │   └── services/           # Business logic
+│   ├── tests/                  # Backend tests
+│   ├── requirements.txt        # Python dependencies
+│   └── Dockerfile              # Backend Docker configuration
+├── docker-compose.yml          # Docker Compose configuration
+├── .env.example                # Example environment variables
+└── README.md                   # Project documentation
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 20.x or later
-- npm 9.x or later
+- Docker and Docker Compose
+- Git
 
-### Installation
+### Running with Docker
 
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/kshatriya-event.git
 cd kshatriya-event
+```
+
+2. Create a .env file based on .env.example:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+3. Start the application with Docker Compose:
+```bash
+docker-compose up
+```
+
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Documentation: http://localhost:8000/docs
+
+### Development Setup (Without Docker)
+
+#### Frontend
+
+1. Navigate to the frontend directory:
+```bash
+cd frontend
 ```
 
 2. Install dependencies:
@@ -36,102 +101,85 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:3000` (or another port if 3000 is in use)
+The frontend will be available at `http://localhost:3000`.
 
-## Development Commands
+#### Backend
 
-- `npm run dev` - Start development server
-- `npm run build` - Build the production site
-- `npm run start` - Start the production server
-- `npm run lint` - Run ESLint
-
-## Project Structure
-
-```
-src/
-├── app/                    # Next.js app directory
-│   ├── page.tsx            # Home page
-│   ├── admin/              # Admin section
-│   │   ├── page.tsx        # Admin dashboard
-│   │   ├── layout.tsx      # Admin layout with auth protection
-│   │   └── sponsors/       # Sponsor management
-│   │       ├── page.tsx    # Sponsors list
-│   │       └── [id]/       # Add/edit sponsor pages
-│   ├── register/           # Registration pages
-│   └── layout.tsx          # Root layout
-├── components/             # Reusable components
-│   ├── Footer.tsx          # Global footer
-│   ├── Header.tsx          # Navigation header
-│   └── RotatingSponsors.tsx # Sponsor carousel component
-└── lib/                    # Utility functions and data handlers
-    └── sponsors.ts         # Sponsor data and API functions
+1. Navigate to the backend directory:
+```bash
+cd backend
 ```
 
-## Admin Panel
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-The website includes a fully functional admin panel accessible at `/admin`. This panel provides functionality to manage various aspects of the event website.
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### Admin Authentication
+4. Start the FastAPI server:
+```bash
+uvicorn app.main:app --reload
+```
 
-For demonstration purposes, the admin credentials are:
-- **Username**: `admin`
-- **Password**: `kshatriya2025`
+The API will be available at `http://localhost:8000`.
 
-These should be changed in a production environment.
+## API Documentation
 
-### Features
+FastAPI automatically generates interactive API documentation:
 
-1. **Dashboard**: Overview with key metrics and quick access to management features
-2. **Sponsor Management**:
-   - View all sponsors with filtering and sorting
-   - Add new sponsors with validation
-   - Edit existing sponsor details
-   - Delete sponsors
-   - Track payment status and contact information
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
 
-### Data Storage
+## Database
 
-The current implementation uses browser localStorage for data persistence. In a production environment, this would be replaced with:
-- A backend API
-- Database storage
-- Proper authentication system
+The application uses PostgreSQL for data storage:
 
-## Sponsor Tiers
+- **Development**: The Docker setup includes a PostgreSQL container
+- **Production**: Configure connection to your production database
 
-The website has four sponsor tiers:
+Database migrations are managed with Alembic.
 
-1. **Platinum**: Premier sponsorship level with maximum visibility
-2. **Gold**: High visibility throughout the site
-3. **Silver**: Medium visibility in multiple sections
-4. **Bronze**: Basic visibility in the sponsors section
+## Authentication
 
-Each tier has designated styling and placement priority in the rotating carousel.
+The application uses JWT-based authentication for the admin panel:
+
+- Admin credentials are stored securely in the database
+- Tokens are used for API authorization
 
 ## Deployment
 
-The site is optimized for deployment to various hosting platforms:
+### Docker Deployment
 
-### Static Hosting (GitHub Pages, Vercel, Netlify)
+The application includes Docker Compose configuration for easy deployment:
 
 ```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Manual Deployment
+
+#### Frontend
+
+Build the Next.js frontend:
+
+```bash
+cd frontend
 npm run build
 ```
 
-This generates a static version of the site in the `out` directory.
+#### Backend
 
-### Server-Side Rendering (Vercel, AWS, DigitalOcean)
+Deploy the FastAPI application with a production ASGI server like Uvicorn or Gunicorn:
 
-For platforms that support Next.js server components, deploy the entire codebase.
-
-## Future Development
-
-Areas planned for future development:
-
-1. **Real Backend Integration**: Replace localStorage with actual database
-2. **Event Schedule Management**: Admin interface for schedule updates
-3. **Registration System**: Online registration with payment processing
-4. **User Authentication**: For registered attendees
-5. **Email Notifications**: For registrations and updates
+```bash
+cd backend
+gunicorn -k uvicorn.workers.UvicornWorker app.main:app
+```
 
 ## Contributing
 
