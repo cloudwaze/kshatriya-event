@@ -7,6 +7,9 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://backend:8000';
 const DEV_USERNAME = 'admin';
 const DEV_PASSWORD = 'kshatriya2025';
 
+// Local state for development to prevent redirect loops in Docker environment
+let devAuthState = false;
+
 /**
  * Login with username and password
  */
@@ -20,11 +23,24 @@ export const login = async (username: string, password: string): Promise<boolean
 
     console.log('Attempting login with API endpoint');
     
+    // For Docker development environment, use direct credential check to avoid API issues
+    if (process.env.NODE_ENV !== 'production' && username === DEV_USERNAME && password === DEV_PASSWORD) {
+      console.log('Using development authentication for Docker environment');
+      localStorage.setItem('token', 'dev-token-1234567890');
+      localStorage.setItem('username', username);
+      // Set development auth state to prevent redirect loops
+      devAuthState = true;
+      return true;
+    }
+    
     try {
       // Try API login first
       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         username,
         password,
+      }, {
+        // Set timeout to prevent hanging requests
+        timeout: 5000
       });
       
       if (response.status === 200 && response.data.access_token) {
@@ -44,6 +60,7 @@ export const login = async (username: string, password: string): Promise<boolean
         console.log('Development credentials match, using fallback authentication');
         localStorage.setItem('token', 'dev-token-1234567890');
         localStorage.setItem('username', username);
+        devAuthState = true;
         return true;
       }
     }
@@ -68,6 +85,7 @@ export const logout = (): void => {
     
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    devAuthState = false;
   } catch (error) {
     console.error('Logout error:', error);
   }
@@ -83,9 +101,17 @@ export const isAuthenticated = (): boolean => {
       console.error('isAuthenticated called in server-side context');
       return false;
     }
+
+    // For development Docker environment, use the in-memory state as a fallback
+    if (process.env.NODE_ENV !== 'production' && devAuthState) {
+      console.log('Using development auth state: true');
+      return true;
+    }
     
     const token = localStorage.getItem('token');
-    return !!token;
+    const isAuth = !!token;
+    console.log('Authentication check result:', isAuth);
+    return isAuth;
   } catch (error) {
     console.error('Error checking authentication status:', error);
     return false;

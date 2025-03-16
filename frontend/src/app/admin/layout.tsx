@@ -13,6 +13,7 @@ export default function AdminLayout({
 }) {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
+  const [redirectAttempts, setRedirectAttempts] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
   
@@ -30,27 +31,40 @@ export default function AdminLayout({
       setLoading(false);
       return;
     }
-    
-    // Check authentication on component mount
-    console.log('Checking authentication status in admin layout');
-    try {
-      const authStatus = isAuthenticated();
-      console.log('Authentication status in admin layout:', authStatus);
-      
-      setAuthenticated(authStatus);
-      
-      if (!authStatus) {
-        console.log('User is not authenticated, redirecting to login page');
-        router.push('/admin/login');
+
+    // Add a delay to prevent rapid redirect cycles
+    const timer = setTimeout(() => {
+      // Prevent too many redirect attempts
+      if (redirectAttempts > 2) {
+        console.error('Too many redirect attempts, stopping redirect loop');
+        setLoading(false);
+        return;
       }
-    } catch (error) {
-      console.error('Error checking authentication:', error);
-      // In case of error, redirect to login
-      router.push('/admin/login');
-    } finally {
-      setLoading(false);
-    }
-  }, [router, isLoginPage, pathname]);
+      
+      // Check authentication on component mount
+      console.log('Checking authentication status in admin layout');
+      try {
+        const authStatus = isAuthenticated();
+        console.log('Authentication status in admin layout:', authStatus);
+        
+        setAuthenticated(authStatus);
+        
+        if (!authStatus) {
+          console.log('User is not authenticated, redirecting to login page');
+          setRedirectAttempts(prev => prev + 1);
+          router.push('/admin/login');
+        }
+      } catch (error) {
+        console.error('Error checking authentication:', error);
+        // In case of error, redirect to login
+        router.push('/admin/login');
+      } finally {
+        setLoading(false);
+      }
+    }, 300); // Short delay
+
+    return () => clearTimeout(timer);
+  }, [router, isLoginPage, pathname, redirectAttempts]);
 
   const handleLogout = () => {
     console.log('Logging out user');
@@ -68,9 +82,10 @@ export default function AdminLayout({
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="text-center">
+        <div className="text-center p-8 bg-white rounded-lg shadow-md">
           <div className="w-16 h-16 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <p className="mt-4 text-gray-600">Loading admin dashboard...</p>
+          <p className="mt-2 text-xs text-gray-500">Please wait while we verify your credentials</p>
         </div>
       </div>
     );
@@ -80,9 +95,10 @@ export default function AdminLayout({
   if (!authenticated) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-100">
-        <div className="text-center">
+        <div className="text-center p-8 bg-white rounded-lg shadow-md">
           <div className="w-16 h-16 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin mx-auto"></div>
           <p className="mt-4 text-gray-600">Redirecting to login...</p>
+          <p className="mt-2 text-xs text-gray-500">You must be authenticated to access this area</p>
         </div>
       </div>
     );

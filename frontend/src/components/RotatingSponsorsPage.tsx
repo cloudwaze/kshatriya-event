@@ -78,15 +78,15 @@ export default function RotatingSponsorsPage() {
   );
 
   return (
-    <div className="mx-auto max-w-6xl">
+    <div className="container mx-auto px-4">
       {/* Tabs Navigation */}
-      <div className="flex justify-center mb-8">
-        <div className="inline-flex rounded-md shadow-sm" role="group">
+      <div className="flex justify-center mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:inline-flex sm:rounded-md sm:shadow-sm" role="group">
           {sponsorTiers.map((tier, index) => (
             <button
               key={index}
               type="button"
-              className={`px-4 py-2 text-sm font-medium border ${
+              className={`px-4 py-2 text-sm font-medium border transition-all ${
                 activeTab === index
                   ? `${tier.buttonClass} text-white border-${tier.buttonClass}`
                   : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
@@ -102,7 +102,7 @@ export default function RotatingSponsorsPage() {
       </div>
 
       {/* Sponsor Content with Animation */}
-      <div className="min-h-[400px]">
+      <div className="min-h-[400px] mb-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -112,50 +112,63 @@ export default function RotatingSponsorsPage() {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            <h2 className={`text-2xl font-bold text-center mb-8 ${sponsorTiers[activeTab].textClass}`}>
+            <h2 className={`text-2xl md:text-3xl font-bold text-center mb-8 ${sponsorTiers[activeTab].textClass}`}>
               {sponsorTiers[activeTab].displayName} Sponsors
             </h2>
 
             {isLoading ? (
-              <div className="flex justify-center items-center h-40">
-                <div className="w-12 h-12 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin"></div>
+              <div className="flex justify-center items-center h-60">
+                <div className="w-16 h-16 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin"></div>
               </div>
             ) : error ? (
               <div className="text-center py-8 text-red-500">
                 <p>{error}</p>
               </div>
             ) : activeTierSponsors.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                <p>No {sponsorTiers[activeTab].displayName} sponsors yet.</p>
+              <div className="text-center py-12 text-gray-500">
+                <p className="text-lg">No {sponsorTiers[activeTab].displayName} sponsors yet.</p>
+                <p className="mt-2">Would you like to be the first?</p>
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                 {activeTierSponsors.map((sponsor) => (
                   <div
                     key={sponsor.id}
-                    className="bg-gray-100 rounded-lg shadow-lg p-6 flex flex-col items-center justify-center h-40 hover:scale-105 transition-all"
+                    className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center justify-center aspect-square hover:shadow-xl transition-all"
                   >
-                    <div className={`${sponsorTiers[activeTab].bgClass} w-full h-20 flex items-center justify-center rounded-md mb-2`}>
-                      <span className={`font-bold ${sponsorTiers[activeTab].textClass}`}>
+                    <div className={`${sponsorTiers[activeTab].bgClass} w-full h-3/4 flex items-center justify-center rounded-md mb-4`}>
+                      <span className={`text-lg font-bold ${sponsorTiers[activeTab].textClass} text-center px-2`}>
                         {sponsor.name}
                       </span>
                     </div>
-                    <p className="text-gray-600 text-sm truncate max-w-full">
-                      {sponsor.website || "No website provided"}
-                    </p>
+                    {sponsor.website ? (
+                      <a 
+                        href={sponsor.website.startsWith('http') ? sponsor.website : `https://${sponsor.website}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-600 text-sm hover:text-[#732424] transition-colors truncate max-w-full"
+                      >
+                        {sponsor.website.replace(/^https?:\/\/(www\.)?/, '')}
+                      </a>
+                    ) : (
+                      <p className="text-gray-500 text-sm italic">No website provided</p>
+                    )}
                   </div>
                 ))}
               </div>
             )}
 
             {/* Call to become a sponsor */}
-            <div className="text-center mt-12">
-              <p className="text-gray-600 mb-4">
+            <div className="text-center mt-16 bg-gray-50 py-8 px-4 rounded-lg shadow-sm">
+              <p className="text-gray-700 mb-4 text-lg">
                 Interested in becoming a {sponsorTiers[activeTab].displayName} sponsor?
               </p>
-              <button className={`px-6 py-2 ${sponsorTiers[activeTab].buttonClass} text-white rounded-lg hover:opacity-90 transition-opacity`}>
+              <a 
+                href="/contact-us" 
+                className={`inline-block px-8 py-3 ${sponsorTiers[activeTab].buttonClass} text-white rounded-lg hover:opacity-90 transition-opacity font-medium`}
+              >
                 Apply as {sponsorTiers[activeTab].displayName} Sponsor
-              </button>
+              </a>
             </div>
           </motion.div>
         </AnimatePresence>
