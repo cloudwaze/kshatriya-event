@@ -10,19 +10,32 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Check if already authenticated
-    console.log('Checking authentication status on login page');
-    const authenticated = isAuthenticated();
-    console.log('Authentication status on login page:', authenticated);
-    
-    if (authenticated) {
-      console.log('User is already authenticated, redirecting to admin dashboard');
-      router.push('/admin');
+    // Skip if we've already checked auth or if we're server-side
+    if (authChecked || typeof window === 'undefined') {
+      return;
     }
-  }, [router]);
+
+    try {
+      // Check if already authenticated
+      console.log('Checking authentication status on login page');
+      const authenticated = isAuthenticated();
+      console.log('Authentication status on login page:', authenticated);
+      
+      if (authenticated) {
+        console.log('User is already authenticated, redirecting to admin dashboard');
+        router.push('/admin');
+      }
+    } catch (error) {
+      console.error('Error checking authentication on login page:', error);
+      // Don't redirect if there's an error checking auth
+    } finally {
+      setAuthChecked(true);
+    }
+  }, [router, authChecked]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

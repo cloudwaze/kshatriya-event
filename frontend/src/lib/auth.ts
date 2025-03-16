@@ -1,12 +1,7 @@
-// Types
-interface AuthToken {
-  access_token: string;
-  token_type: string;
-}
+import axios from 'axios';
+// NOTE: Make sure to run: npm install axios --save in the frontend directory
 
-// Storage keys
-const TOKEN_STORAGE_KEY = 'auth-token';
-const AUTH_STATE_KEY = 'admin-auth';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://backend:8000';
 
 // Development credentials for fallback
 const DEV_USERNAME = 'admin';
@@ -14,125 +9,121 @@ const DEV_PASSWORD = 'kshatriya2025';
 
 /**
  * Login with username and password
- * Uses the backend API for authentication with a fallback for development
  */
-export async function login(username: string, password: string): Promise<boolean> {
+export const login = async (username: string, password: string): Promise<boolean> => {
   try {
-    console.log('Attempting login with username:', username);
+    // Server-side check to avoid localStorage errors
+    if (typeof window === 'undefined') {
+      console.error('Login attempted in server-side context');
+      return false;
+    }
+
+    console.log('Attempting login with API endpoint');
     
     try {
-      // Prepare request to the API
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
+      // Try API login first
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
+        username,
+        password,
       });
       
-      // Check if request was successful
-      if (response.ok) {
-        // Parse token from response
-        const data = await response.json();
-        
-        // Store auth token
-        console.log('Login successful, storing token');
-        localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(data));
-        localStorage.setItem(AUTH_STATE_KEY, 'true');
-        
+      if (response.status === 200 && response.data.access_token) {
+        // Store the token in localStorage
+        localStorage.setItem('token', response.data.access_token);
+        localStorage.setItem('username', username);
+        return true;
+      } else {
+        console.log('API login failed with status:', response.status);
+      }
+    } catch (apiError) {
+      console.error('API login error:', apiError);
+      
+      // Fallback to development credentials in case of API error
+      console.log('Checking against development credentials');
+      if (username === DEV_USERNAME && password === DEV_PASSWORD) {
+        console.log('Development credentials match, using fallback authentication');
+        localStorage.setItem('token', 'dev-token-1234567890');
+        localStorage.setItem('username', username);
         return true;
       }
-      
-      console.log('Login failed: Server returned', response.status);
-    } catch (error) {
-      console.error('API login error, trying fallback:', error);
     }
     
-    // Fallback for development: Check hardcoded credentials
-    console.log('Using development login fallback');
-    if (username === DEV_USERNAME && password === DEV_PASSWORD) {
-      console.log('Development login successful');
-      
-      // Set auth state to true
-      localStorage.setItem(AUTH_STATE_KEY, 'true');
-      
-      // Set a mock token
-      const mockToken = {
-        access_token: 'dev_mock_token',
-        token_type: 'bearer'
-      };
-      localStorage.setItem(TOKEN_STORAGE_KEY, JSON.stringify(mockToken));
-      
-      return true;
-    }
-    
-    console.log('Login failed: Invalid credentials');
     return false;
   } catch (error) {
-    console.error('Login failed:', error);
+    console.error('Login error:', error);
     return false;
   }
-}
+};
 
 /**
  * Logout the current user
  */
-export function logout(): void {
-  console.log('Logging out');
-  localStorage.removeItem(TOKEN_STORAGE_KEY);
-  localStorage.removeItem(AUTH_STATE_KEY);
-}
+export const logout = (): void => {
+  try {
+    // Server-side check to avoid localStorage errors
+    if (typeof window === 'undefined') {
+      console.error('Logout attempted in server-side context');
+      return;
+    }
+    
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+  } catch (error) {
+    console.error('Logout error:', error);
+  }
+};
 
 /**
  * Check if the user is authenticated
  */
-export function isAuthenticated(): boolean {
-  if (typeof window === 'undefined') {
-    console.log('isAuthenticated: window is undefined (server-side)');
+export const isAuthenticated = (): boolean => {
+  try {
+    // Server-side check to avoid localStorage errors
+    if (typeof window === 'undefined') {
+      console.error('isAuthenticated called in server-side context');
+      return false;
+    }
+    
+    const token = localStorage.getItem('token');
+    return !!token;
+  } catch (error) {
+    console.error('Error checking authentication status:', error);
     return false;
   }
-  const isAuth = localStorage.getItem(AUTH_STATE_KEY) === 'true';
-  console.log('isAuthenticated:', isAuth);
-  return isAuth;
-}
+};
 
 /**
- * Get the current auth token
+ * Get the auth token
  */
-export function getAuthToken(): AuthToken | null {
-  if (typeof window === 'undefined') {
-    console.log('getAuthToken: window is undefined (server-side)');
-    return null;
-  }
-  
-  const tokenStr = localStorage.getItem(TOKEN_STORAGE_KEY);
-  if (!tokenStr) {
-    console.log('getAuthToken: No token found');
-    return null;
-  }
-  
+export const getAuthToken = (): string | null => {
   try {
-    const token = JSON.parse(tokenStr) as AuthToken;
-    console.log('getAuthToken: Token found');
-    return token;
+    // Server-side check to avoid localStorage errors
+    if (typeof window === 'undefined') {
+      console.error('getAuthToken called in server-side context');
+      return null;
+    }
+    
+    return localStorage.getItem('token');
   } catch (error) {
-    console.error('Error parsing auth token:', error);
+    console.error('Error getting auth token:', error);
     return null;
   }
-}
+};
 
 /**
- * Get auth headers for API requests
+ * Get headers with auth token
  */
-export function getAuthHeaders(): HeadersInit {
-  const token = getAuthToken();
-  if (!token) {
-    console.log('getAuthHeaders: No token available');
+export const getAuthHeaders = (): Record<string, string> => {
+  try {
+    const token = getAuthToken();
+    if (token) {
+      return {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+    return {};
+  } catch (error) {
+    console.error('Error getting auth headers:', error);
     return {};
   }
-  
-  console.log('getAuthHeaders: Adding auth header');
-  return {
-    Authorization: `${token.token_type} ${token.access_token}`
-  };
-} 
+}; 

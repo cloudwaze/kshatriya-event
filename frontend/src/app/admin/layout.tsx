@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { isAuthenticated, logout } from '@/lib/auth';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -14,21 +14,43 @@ export default function AdminLayout({
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
+  
+  // Check if we're on the login page to prevent redirection loops
+  const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
+    // Only run client-side
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
+    // Don't check auth on login page to prevent loops
+    if (isLoginPage) {
+      setLoading(false);
+      return;
+    }
+    
     // Check authentication on component mount
     console.log('Checking authentication status in admin layout');
-    const authStatus = isAuthenticated();
-    console.log('Authentication status in admin layout:', authStatus);
-    
-    setAuthenticated(authStatus);
-    setLoading(false);
-    
-    if (!authStatus) {
-      console.log('User is not authenticated, redirecting to login page');
+    try {
+      const authStatus = isAuthenticated();
+      console.log('Authentication status in admin layout:', authStatus);
+      
+      setAuthenticated(authStatus);
+      
+      if (!authStatus) {
+        console.log('User is not authenticated, redirecting to login page');
+        router.push('/admin/login');
+      }
+    } catch (error) {
+      console.error('Error checking authentication:', error);
+      // In case of error, redirect to login
       router.push('/admin/login');
+    } finally {
+      setLoading(false);
     }
-  }, [router]);
+  }, [router, isLoginPage, pathname]);
 
   const handleLogout = () => {
     console.log('Logging out user');
@@ -36,6 +58,11 @@ export default function AdminLayout({
     console.log('User logged out, redirecting to login page');
     router.push('/admin/login');
   };
+
+  // If on login page, just render children
+  if (isLoginPage) {
+    return children;
+  }
 
   // Show loading state while checking authentication
   if (loading) {
@@ -55,7 +82,7 @@ export default function AdminLayout({
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+          <p className="mt-4 text-gray-600">Redirecting to login...</p>
         </div>
       </div>
     );
