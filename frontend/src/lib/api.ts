@@ -1,7 +1,9 @@
 // API utility functions for communicating with the backend
+import { getAuthHeaders } from './auth';
 
 // Use relative URLs to leverage Next.js API routes
-const API_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+// No trailing slash to work with our simplified API routes
+const API_URL = '/api';
 
 /**
  * Generic fetch function with error handling and retry logic
@@ -15,6 +17,7 @@ async function fetchAPI<T>(
   
   const headers = {
     'Content-Type': 'application/json',
+    ...getAuthHeaders(),
     ...options.headers,
   };
   
@@ -32,7 +35,7 @@ async function fetchAPI<T>(
         try {
           const errorData = await response.json();
           throw new Error(errorData.detail || `API error: ${response.status}`);
-        } catch (parseError) {
+        } catch {
           // If parsing fails, throw a generic error
           throw new Error(`API error: ${response.status}`);
         }
@@ -67,8 +70,10 @@ export interface Sponsor {
   id: string;
   name: string;
   tier: 'platinum' | 'gold' | 'silver' | 'bronze';
-  logo: string;
-  website: string;
+  logo?: string;
+  logo_url?: string;
+  website?: string;
+  website_url?: string;
   description: string;
   contact_name: string;
   contact_email: string;
@@ -84,7 +89,7 @@ export type SponsorUpdate = Partial<SponsorCreate>;
 
 // Get all sponsors
 export const getSponsors = async (): Promise<Sponsor[]> => {
-  return fetchAPI<Sponsor[]>('/sponsors/');
+  return fetchAPI<Sponsor[]>('/sponsors');
 };
 
 // Get a single sponsor by ID
@@ -94,7 +99,7 @@ export const getSponsorById = async (id: string): Promise<Sponsor> => {
 
 // Create a new sponsor
 export const createSponsor = async (sponsorData: SponsorCreate): Promise<Sponsor> => {
-  return fetchAPI<Sponsor>('/sponsors/', {
+  return fetchAPI<Sponsor>('/sponsors', {
     method: 'POST',
     body: JSON.stringify(sponsorData),
   });
@@ -128,16 +133,9 @@ export interface Token {
 }
 
 export const login = async (credentials: LoginRequest): Promise<Token> => {
-  const formData = new URLSearchParams();
-  formData.append('username', credentials.username);
-  formData.append('password', credentials.password);
-  
   return fetchAPI<Token>('/auth/login', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: formData.toString(),
+    body: JSON.stringify(credentials),
   });
 };
 

@@ -108,33 +108,24 @@ const saveLocalSponsors = (sponsors: Sponsor[]) => {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(sponsors));
 };
 
-// API Functions (placeholders for actual API calls)
+// API Functions (using localStorage for development)
 
 // Get all sponsors
 export const getSponsors = async (): Promise<Sponsor[]> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 500));
-  
-  // In a real app, this would be a fetch call to an API
+  // For development, we're using localStorage
   return getLocalSponsors();
 };
 
 // Get a single sponsor by ID
 export const getSponsorById = async (id: string): Promise<Sponsor | null> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 300));
-  
-  // In a real app, this would be a fetch call to an API
+  // For development, we're using localStorage
   const sponsors = getLocalSponsors();
   return sponsors.find(sponsor => sponsor.id === id) || null;
 };
 
 // Create a new sponsor
 export const createSponsor = async (sponsorData: Omit<Sponsor, 'id' | 'createdAt' | 'updatedAt'>): Promise<Sponsor> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 800));
-  
-  // In a real app, this would be a POST request to an API
+  // For development, we're using localStorage
   const sponsors = getLocalSponsors();
   
   const newSponsor: Sponsor = {
@@ -152,10 +143,7 @@ export const createSponsor = async (sponsorData: Omit<Sponsor, 'id' | 'createdAt
 
 // Update an existing sponsor
 export const updateSponsor = async (id: string, sponsorData: Partial<Omit<Sponsor, 'id' | 'createdAt' | 'updatedAt'>>): Promise<Sponsor | null> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 800));
-  
-  // In a real app, this would be a PUT/PATCH request to an API
+  // For development, we're using localStorage
   const sponsors = getLocalSponsors();
   const index = sponsors.findIndex(sponsor => sponsor.id === id);
   
@@ -175,10 +163,7 @@ export const updateSponsor = async (id: string, sponsorData: Partial<Omit<Sponso
 
 // Delete a sponsor
 export const deleteSponsor = async (id: string): Promise<boolean> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 600));
-  
-  // In a real app, this would be a DELETE request to an API
+  // For development, we're using localStorage
   const sponsors = getLocalSponsors();
   const index = sponsors.findIndex(sponsor => sponsor.id === id);
   

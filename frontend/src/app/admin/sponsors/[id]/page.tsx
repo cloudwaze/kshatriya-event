@@ -4,11 +4,16 @@ import { useState, useEffect, FormEvent } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { 
-  getSponsorById, 
-  createSponsor, 
-  updateSponsor,
-  Sponsor as SponsorType
-} from '@/lib/sponsors';
+  getSponsorById as getAPISponsorById, 
+  createSponsor as createAPISponsor, 
+  updateSponsor as updateAPISponsor
+} from '@/lib/api';
+import { 
+  backendSponsorToFrontend, 
+  frontendSponsorToBackendCreate, 
+  frontendSponsorToBackendUpdate 
+} from '@/lib/adapters';
+import { Sponsor as SponsorType } from '@/lib/sponsors';
 
 // Form initial state
 const emptySponsor: Omit<SponsorType, 'id' | 'createdAt' | 'updatedAt'> = {
@@ -46,11 +51,14 @@ export default function SponsorFormPage() {
       }
 
       try {
-        const sponsor = await getSponsorById(sponsorId);
+        const backendSponsor = await getAPISponsorById(sponsorId);
         
-        if (sponsor) {
+        if (backendSponsor) {
+          // Convert backend sponsor to frontend format
+          const frontendSponsor = backendSponsorToFrontend(backendSponsor);
+          
           // Extract what we need while ignoring id, createdAt, and updatedAt
-          const { name, tier, logo, website, description, contactName, contactEmail, contactPhone, amountPaid, paymentStatus } = sponsor;
+          const { name, tier, logo, website, description, contactName, contactEmail, contactPhone, amountPaid, paymentStatus } = frontendSponsor;
           
           setFormData({
             name,
@@ -155,9 +163,13 @@ export default function SponsorFormPage() {
       setIsSubmitting(true);
       
       if (isNewSponsor) {
-        await createSponsor(formData);
+        // Convert frontend data to backend format and create
+        const backendData = frontendSponsorToBackendCreate(formData);
+        await createAPISponsor(backendData);
       } else {
-        await updateSponsor(sponsorId, formData);
+        // Convert frontend data to backend format and update
+        const backendData = frontendSponsorToBackendUpdate(formData);
+        await updateAPISponsor(sponsorId, backendData);
       }
       
       // Navigate back to sponsors list
