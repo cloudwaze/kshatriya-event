@@ -6,6 +6,7 @@ from sqlalchemy.sql import func
 from app.db.base_class import Base
 
 class Registration(Base):
+    __tablename__ = 'registrations'
     registration_id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey('users.user_id', ondelete='CASCADE'))
     event_id = Column(Integer, ForeignKey('events.event_id', ondelete='CASCADE'))

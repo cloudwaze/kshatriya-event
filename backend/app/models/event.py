@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from app.db.base_class import Base
 
 class Event(Base):
+    __tablename__ = 'events'
     event_id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(255), nullable=False)
     price = Column(Numeric(10, 2), nullable=False)
