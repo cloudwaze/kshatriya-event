@@ -1,13 +1,14 @@
 from datetime import timedelta
-from typing import Any
+from typing import Any, Dict
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from pydantic import BaseModel
 
 from app import schemas
 from app.core.config import settings
-from app.core.security import create_access_token, verify_password
+from app.core.security import create_access_token, verify_password, verify_registration_token
 from app.db.session import get_db
 from app.models.user import User
 
@@ -37,3 +38,38 @@ def login_access_token(
         ),
         "token_type": "bearer",
     } 
+
+
+class TokenRequest(BaseModel):
+    token: str
+
+
+class TokenVerificationResponse(BaseModel):
+    valid: bool
+    registration_id: int = None
+    event_id: int = None
+
+
+@router.post("/verify-registration-token", response_model=TokenVerificationResponse)
+def verify_token(token_request: TokenRequest) -> Any:
+    """
+    Verify a registration token from a QR code.
+    Returns validation status and extracted registration/event IDs if valid.
+    """
+    try:
+        # Verify token and get payload
+        payload = verify_registration_token(token_request.token)
+        
+        # Return success with registration and event IDs
+        return {
+            "valid": True,
+            "registration_id": payload.get("reg_id"),
+            "event_id": payload.get("event_id")
+        }
+    except ValueError:
+        # Return invalid response for any validation errors
+        return {
+            "valid": False,
+            "registration_id": None,
+            "event_id": None
+        } 

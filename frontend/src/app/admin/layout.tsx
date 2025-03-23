@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
-import { isAuthenticated, logout } from '@/lib/auth';
+import React, { useEffect, useState } from 'react';
+import { redirect, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { isAuthenticated, logout } from '../../lib/auth';
 import Image from 'next/image';
 
 export default function AdminLayout({

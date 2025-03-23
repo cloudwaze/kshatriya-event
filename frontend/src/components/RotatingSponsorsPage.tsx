@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getSponsors } from '@/lib/api';
-import { backendSponsorToFrontend } from '@/lib/adapters';
-import { Sponsor } from '@/lib/sponsors';
+import { getSponsors } from '../lib/api';
+import { backendSponsorToFrontend } from '../lib/adapters';
+import { Sponsor } from '../lib/sponsors';
 
 // Sponsor tier configuration
 const sponsorTiers = [

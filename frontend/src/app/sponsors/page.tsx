@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import RotatingSponsorsPage from '@/components/RotatingSponsorsPage';
+import RotatingSponsorsPage from '../../components/RotatingSponsorsPage';
+import { PageLayout } from '../../components/ui/PageLayout';
 
 // Sponsorship packages
 const sponsorshipTiers = [
@@ -50,7 +51,7 @@ const sponsorshipTiers = [
 
 export default function SponsorsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <PageLayout maxWidth="full">
       {/* Hero section with background image and overlay */}
       <div className="relative bg-[#732424] text-white">
         <div className="absolute inset-0 bg-gradient-to-r from-[#732424] to-[#9E3030] opacity-90"></div>
@@ -245,6 +246,6 @@ export default function SponsorsPage() {
           </div>
         </div>
       </section>
-    </div>
+    </PageLayout>
   );
 } 

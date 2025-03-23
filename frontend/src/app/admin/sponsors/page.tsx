@@ -1,13 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { 
-  getSponsors as getAPISponsors,
-  deleteSponsor as deleteAPISponsor
-} from '@/lib/api';
-import { backendSponsorToFrontend } from '@/lib/adapters';
-import { Sponsor as SponsorType } from '@/lib/sponsors';
+import Image from 'next/image';
+import { deleteSponsor, getSponsors } from '../../../lib/api';
+import { backendSponsorToFrontend } from '../../../lib/adapters';
+import { Sponsor as SponsorType } from '../../../lib/sponsors';
 
 // Sponsor list page component
 export default function SponsorsPage() {
@@ -25,7 +24,7 @@ export default function SponsorsPage() {
         
         // Get sponsors from API
         console.log('Fetching sponsors from API...');
-        const backendSponsors = await getAPISponsors();
+        const backendSponsors = await getSponsors();
         console.log('Received sponsors from API:', backendSponsors);
         
         // Convert to frontend format
@@ -55,7 +54,7 @@ export default function SponsorsPage() {
       setError(null);
       
       // Delete from API
-      await deleteAPISponsor(id);
+      await deleteSponsor(id);
       
       // Update local state
       setSponsors(sponsors.filter(sponsor => sponsor.id !== id));

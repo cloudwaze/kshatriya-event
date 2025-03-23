@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { login, isAuthenticated } from '@/lib/auth';
+import Link from 'next/link';
+import { login, isAuthenticated } from '../../../lib/auth';
 import Image from 'next/image';
 
 export default function LoginPage() {

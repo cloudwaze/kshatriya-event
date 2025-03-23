@@ -1,20 +1,42 @@
 // API utility functions for communicating with the backend
 import { getAuthHeaders } from './auth';
 
-// Use relative URLs to leverage Next.js API routes
-// No trailing slash to work with our simplified API routes
-const API_URL = '/api';
+// Backend API URL configuration
+const API_URL = 'http://localhost:8010/api/v1';
+
+/**
+ * Custom API error class with additional context
+ */
+export class APIError extends Error {
+  status: number;
+  
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = 'APIError';
+    this.status = status;
+  }
+}
 
 /**
  * Generic fetch function with error handling and retry logic
+ * @param endpoint - API endpoint path
+ * @param options - Fetch options
+ * @param retries - Number of retry attempts
+ * @returns Promise with the response data
  */
 async function fetchAPI<T>(
   endpoint: string,
   options: RequestInit = {},
   retries = 3
 ): Promise<T> {
-  const url = `${API_URL}${endpoint}`;
+  // Normalize the endpoint
+  const normalizedEndpoint = endpoint.startsWith('/')
+    ? endpoint
+    : `/${endpoint}`;
+    
+  const url = `${API_URL}${normalizedEndpoint}`;
   
+  // Prepare headers
   const headers = {
     'Content-Type': 'application/json',
     ...getAuthHeaders(),
@@ -34,10 +56,13 @@ async function fetchAPI<T>(
         // Try to parse error message from response
         try {
           const errorData = await response.json();
-          throw new Error(errorData.detail || `API error: ${response.status}`);
-        } catch {
+          throw new APIError(
+            errorData.detail || `API error: ${response.status}`, 
+            response.status
+          );
+        } catch (parseError) {
           // If parsing fails, throw a generic error
-          throw new Error(`API error: ${response.status}`);
+          throw new APIError(`API error: ${response.status}`, response.status);
         }
       }
       
@@ -48,7 +73,7 @@ async function fetchAPI<T>(
       
       return await response.json();
     } catch (error) {
-      console.error(`API request failed (attempt ${attempt + 1}/${retries}):`, error);
+      // Store the last error
       lastError = error;
       
       // Don't retry on final attempt
@@ -66,6 +91,9 @@ async function fetchAPI<T>(
 
 // Sponsor API functions
 
+/**
+ * Sponsor entity interface
+ */
 export interface Sponsor {
   id: string;
   name: string;
@@ -147,4 +175,90 @@ export const getAuthHeader = (): HeadersInit => {
   
   const token = localStorage.getItem('token');
   return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
+// Event API functions
+export interface Event {
+  event_id: number;
+  name: string;
+  price: number;
+  created_at?: string;
+}
+
+export const getEvents = async (): Promise<Event[]> => {
+  return fetchAPI<Event[]>('/events/');
+};
+
+// Registration API functions
+export interface RegistrationRequest {
+  event_id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+}
+
+export interface Registration {
+  registration_id: number;
+  ticket_number: string;
+  event_id: number;
+  event_name: string;
+  attendee_name: string;
+  registration_date: string;
+  status: string;
+  qr_code: string;
+}
+
+export const createRegistration = async (registrationData: RegistrationRequest): Promise<Registration> => {
+  return fetchAPI<Registration>('/registrations/', {
+    method: 'POST',
+    body: JSON.stringify(registrationData),
+  });
+};
+
+export const getRegistration = async (id: number): Promise<Registration> => {
+  return fetchAPI<Registration>(`/registrations/${id}`);
+};
+
+// Token verification API functions
+export interface TokenVerificationResponse {
+  valid: boolean;
+  registration_id: number;
+  event_id: number;
+}
+
+export const verifyRegistrationToken = async (token: string): Promise<TokenVerificationResponse> => {
+  return fetchAPI<TokenVerificationResponse>('/auth/verify-registration-token', {
+    method: 'POST',
+    body: JSON.stringify({ token }),
+  });
+};
+
+// Check-in API functions
+export interface CheckInRequest {
+  admin_note?: string;
+}
+
+export interface CheckInResponse {
+  registration_id: number;
+  ticket_number: string;
+  event_name: string;
+  attendee_name: string;
+  check_in_timestamp: string;
+  checked_in_by: number;
+  status: string;
+  admin_note?: string;
+}
+
+export const checkInRegistration = async (registrationId: number, adminNote?: string): Promise<CheckInResponse> => {
+  const data: CheckInRequest = {};
+  
+  if (adminNote) {
+    data.admin_note = adminNote;
+  }
+  
+  return fetchAPI<CheckInResponse>(`/registrations/${registrationId}/check-in`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
 }; 
