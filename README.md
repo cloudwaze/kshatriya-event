@@ -20,6 +20,7 @@ A modern, full-stack event website built with Next.js frontend and FastAPI backe
 - **Database Integration**: PostgreSQL for reliable data persistence
 - **Docker Containerization**: Easy deployment with Docker Compose
 - **Event Registration System**: Allow attendees to register for the event
+- **Multi-Event Registration**: Register for multiple events with a single form and QR code
 - **Sponsor Management**: Full CRUD operations for managing event sponsors
 - **Admin Dashboard**: Secure admin panel for site management
 - **Dynamic Content**: Rotating sponsor carousel, interactive schedules
