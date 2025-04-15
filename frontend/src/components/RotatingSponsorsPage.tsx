@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getSponsors } from '../lib/api';
-import { backendSponsorToFrontend } from '../lib/adapters';
 import { Sponsor } from '../lib/sponsors';
+import sponsorsData from '../data/sponsors.json';
 
 // Sponsor tier configuration
 const sponsorTiers = [
@@ -50,29 +48,9 @@ const sponsorTiers = [
 
 export default function RotatingSponsorsPage() {
   const [activeTab, setActiveTab] = useState(0);
-  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Fetch sponsors from API
-  useEffect(() => {
-    async function fetchSponsors() {
-      try {
-        setIsLoading(true);
-        const backendSponsors = await getSponsors();
-        const frontendSponsors = backendSponsors.map(backendSponsorToFrontend);
-        setSponsors(frontendSponsors);
-        setError(null);
-      } catch (err) {
-        console.error('Error fetching sponsors:', err);
-        setError('Failed to load sponsors');
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchSponsors();
-  }, []);
+  
+  // Use static sponsors data
+  const sponsors = sponsorsData as Sponsor[];
 
   // Filter sponsors by the active tier
   const activeTierSponsors = sponsors.filter(
@@ -118,15 +96,7 @@ export default function RotatingSponsorsPage() {
               {sponsorTiers[activeTab].displayName} Sponsors
             </h2>
 
-            {isLoading ? (
-              <div className="flex justify-center items-center h-60">
-                <div className="w-16 h-16 border-4 border-[#732424] border-t-[#FDB347] rounded-full animate-spin"></div>
-              </div>
-            ) : error ? (
-              <div className="text-center py-8 text-red-500">
-                <p>{error}</p>
-              </div>
-            ) : activeTierSponsors.length === 0 ? (
+            {activeTierSponsors.length === 0 ? (
               <div className="text-center py-12 text-gray-500">
                 <p className="text-lg">No {sponsorTiers[activeTab].displayName} sponsors yet.</p>
                 <p className="mt-2">Would you like to be the first?</p>
@@ -165,12 +135,12 @@ export default function RotatingSponsorsPage() {
               <p className="text-gray-700 mb-4 text-lg">
                 Interested in becoming a {sponsorTiers[activeTab].displayName} sponsor?
               </p>
-              <a 
+              <Link 
                 href="/contact-us" 
                 className={`inline-block px-8 py-3 ${sponsorTiers[activeTab].buttonClass} text-white rounded-lg hover:opacity-90 transition-opacity font-medium`}
               >
                 Apply as {sponsorTiers[activeTab].displayName} Sponsor
-              </a>
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

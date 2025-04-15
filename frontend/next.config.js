@@ -17,7 +17,11 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    unoptimized: true,
   },
+  output: 'export',
+  // Repository name for GitHub Pages
+  basePath: '/kshatriya-event',
 };
 
 module.exports = nextConfig; 
