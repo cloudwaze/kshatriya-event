@@ -4,11 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import RotatingSponsors from '../components/RotatingSponsors';
 import { PageLayout } from '../components/ui/PageLayout';
-import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <PageLayout maxWidth="full">
       {/* Hero Section - Modern Design */}
@@ -50,7 +47,7 @@ export default function Home() {
             <div className="w-full md:w-1/2 relative">
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-300">
                 <Image 
-                  src="/images/main-event.jpg" 
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/main-event.jpg`}
                   alt="Kshatriya Event Celebration"
                   width={600}
                   height={400}
@@ -132,7 +129,7 @@ export default function Home() {
             {/* Left Side: Image */}
             <div className="w-full md:w-1/2 flex justify-center">
               <Image
-                src="/images/AboutusImage.png"
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/AboutusImage.png`}
                 alt="About Us"
                 width={400}
                 height={300}
