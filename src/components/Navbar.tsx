@@ -49,7 +49,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
-                  src="/logo.svg"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.svg`}
                   alt="Kshatriya Logo"
                   width={60}
                   height={60}
