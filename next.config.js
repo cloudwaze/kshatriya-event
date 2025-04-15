@@ -20,8 +20,8 @@ const nextConfig = {
     unoptimized: true,
   },
   output: 'export',
-  // Repository name for GitHub Pages - comment out for local testing
-  // basePath: '/kshatriya-event',
+  // Repository name for GitHub Pages
+  basePath: '/kshatriya-event',
 };
 
 module.exports = nextConfig; 
