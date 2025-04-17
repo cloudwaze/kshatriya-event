@@ -7,181 +7,77 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Schedule data with enhanced structure
 const schedule = [
   {
-    date: "March 15, 2025",
+    date: "December 20, 2025",
     day: "Day 1",
-    title: "Banquet Hall - An Evening of Elegance & Celebration",
+    title: "Cultural & Networking Events",
     themeColor: "#732424",
     accentColor: "#9E3030",
     icon: "🍽️",
-    description: `Step into an exquisite evening of culture, camaraderie, and celebration at the Banquet Hall. 
-    This elegant gathering marks the commencement of the Kshatriya Event 2025, bringing together esteemed leaders, 
-    professionals, and community members for an unforgettable experience.`,
+    description: `Join us for a rich day of matrimonial connections, youth empowerment, entrepreneurial insights, and an elegant evening banquet. 
+    Each carefully designed event brings together our community to celebrate culture, build relationships, and foster personal and professional growth.`,
     highlights: [
-      "Networking with influential leaders & community members",
-      "A luxurious dining experience with traditional flavors",
-      "Inspiring speeches on leadership & heritage",
-      "A sophisticated atmosphere celebrating excellence"
+      "Matrimonial event for community connections",
+      "Youth empowerment sessions and activities",
+      "Entrepreneurial networking and knowledge sharing",
+      "Grand Banquet dinner and cultural celebration"
     ],
     events: [
       {
-        time: "09:00 - 10:00",
-        title: "Registration & Breakfast",
+        time: "Morning",
+        title: "Matrimonial Event",
         location: "Main Hall",
-        description: "Start your day with a nutritious breakfast while connecting with fellow attendees.",
-        isKeyEvent: false
-      },
-      {
-        time: "10:00 - 11:30",
-        title: "Opening Ceremony",
-        location: "Main Hall",
-        description: "Join us for the official commencement of the Kshatriya Event 2025 with special addresses from community leaders.",
+        description: "Saturday Morning, December 20, 2025 - A thoughtfully organized event to build meaningful connections within our community.",
         isKeyEvent: true
       },
       {
-        time: "11:30 - 12:30",
-        title: "Keynote Speech: Community Leadership",
-        location: "Main Hall",
-        description: "An inspiring talk on the importance of leadership within our community and beyond.",
+        time: "Afternoon",
+        title: "Empower Youth Event",
+        location: "Youth Center",
+        description: "Saturday Afternoon, December 20, 2025 - Inspiring the next generation through mentorship, activities, and engaging discussions.",
         isKeyEvent: true
       },
       {
-        time: "12:30 - 14:00",
-        title: "Networking Lunch",
-        location: "Dining Area",
-        description: "Enjoy a sumptuous lunch while networking with peers and speakers.",
-        isKeyEvent: false
-      },
-      {
-        time: "14:00 - 16:00",
-        title: "Panel Discussion: Heritage Preservation",
+        time: "Afternoon",
+        title: "Entrepreneurship",
         location: "Conference Room A",
-        description: "Experts discuss strategies for preserving our cultural heritage for future generations.",
-        isKeyEvent: false
-      },
-      {
-        time: "18:00 - 22:00",
-        title: "Banquet Dinner & Cultural Performances",
-        location: "Grand Banquet Hall",
-        description: "An evening of fine dining, cultural performances, and celebration.",
+        description: "Saturday Afternoon, December 20, 2025 - Connect with successful entrepreneurs and gain valuable insights for your business journey.",
         isKeyEvent: true
       },
+      {
+        time: "Evening",
+        title: "Banquet",
+        location: "Grand Banquet Hall",
+        description: "Saturday Evening, December 20, 2025 - An elegant dinner with cultural performances and community celebration.",
+        isKeyEvent: true
+      }
     ],
   },
   {
-    date: "March 16, 2025",
+    date: "December 21, 2025",
     day: "Day 2",
-    title: "Main Event - A Grand Celebration of Culture & Knowledge",
+    title: "National Event",
     themeColor: "#9E3030",
     accentColor: "#E47D30",
     icon: "🎭",
-    description: `The Main Event is the heart of the Kshatriya Event 2025, designed to inspire, educate, 
-    and connect people from diverse backgrounds. This day is packed with cultural workshops, interactive 
-    sessions, and thought-provoking discussions that celebrate leadership, heritage, and progress.`,
+    description: `The National Event brings together our entire community for a full day of celebration, 
+    connecting with heritage, sharing knowledge, and building stronger bonds. This day-long gathering 
+    is the centerpiece of our Kshatriya Event 2025.`,
     highlights: [
-      "Cultural Workshops – Explore traditional arts, music, and heritage",
-      "Leadership Talks – Learn from industry experts and community leaders",
-      "Interactive Sessions – Engage in thought-provoking discussions",
-      "Grand Cultural Night & Dinner – A spectacular finale with performances"
+      "National gathering of community members",
+      "Cultural performances and ceremonies",
+      "Knowledge sharing and educational sessions",
+      "Networking opportunities with community leaders"
     ],
     events: [
       {
-        time: "09:30 - 10:30",
-        title: "Breakfast & Networking",
-        location: "Dining Area",
-        description: "Begin your day with breakfast and meaningful conversations.",
-        isKeyEvent: false
-      },
-      {
-        time: "10:30 - 12:00",
-        title: "Cultural Workshop Sessions",
-        location: "Various Rooms",
-        description: "Participate in hands-on workshops focused on traditional arts and crafts.",
+        time: "All Day",
+        title: "National Event",
+        location: "Main Convention Center",
+        description: "All Day Sunday, December 21, 2025 - A comprehensive national gathering with multiple activities, performances, and sessions throughout the day.",
         isKeyEvent: true
-      },
-      {
-        time: "12:00 - 13:30",
-        title: "Lunch Break",
-        location: "Main Hall",
-        description: "Refuel with a delicious lunch featuring traditional cuisine.",
-        isKeyEvent: false
-      },
-      {
-        time: "13:30 - 15:30",
-        title: "Leadership Development Workshop",
-        location: "Conference Room B",
-        description: "Interactive session on developing leadership skills within the community context.",
-        isKeyEvent: true
-      },
-      {
-        time: "16:00 - 17:30",
-        title: "Youth Forum: Future Leaders",
-        location: "Auditorium",
-        description: "Young leaders share their vision for the community's future.",
-        isKeyEvent: false
-      },
-      {
-        time: "18:00 - 22:00",
-        title: "Cultural Night & Dinner",
-        location: "Community Center",
-        description: "A spectacular evening featuring cultural performances, music, and cuisine.",
-        isKeyEvent: true
-      },
+      }
     ],
-  },
-  {
-    date: "March 17, 2025",
-    day: "Day 3",
-    title: "Workshops & Conclusion - Building Skills & Connections",
-    themeColor: "#E47D30",
-    accentColor: "#732424",
-    icon: "🤝",
-    description: `The final day focuses on skill-building workshops, networking opportunities, and collaborative 
-    sessions that empower attendees to apply what they've learned throughout the event. The day concludes with 
-    a special closing ceremony that celebrates our shared experiences.`,
-    highlights: [
-      "Professional development workshops tailored to community needs",
-      "Networking sessions with industry professionals",
-      "Collaborative problem-solving activities",
-      "Closing ceremony with recognition of contributors"
-    ],
-    events: [
-      {
-        time: "09:00 - 10:00",
-        title: "Breakfast & Reflection Session",
-        location: "Dining Area",
-        description: "Share your experiences and insights from the previous days over breakfast.",
-        isKeyEvent: false
-      },
-      {
-        time: "10:00 - 12:00",
-        title: "Professional Development Workshops",
-        location: "Various Rooms",
-        description: "Choose from multiple workshops focused on career advancement and skill building.",
-        isKeyEvent: true
-      },
-      {
-        time: "12:00 - 13:30",
-        title: "Networking Lunch",
-        location: "Main Hall",
-        description: "Final opportunity to connect with peers and speakers over lunch.",
-        isKeyEvent: false
-      },
-      {
-        time: "13:30 - 15:00",
-        title: "Community Action Planning",
-        location: "Conference Room A",
-        description: "Collaborative session to develop actionable plans for community initiatives.",
-        isKeyEvent: true
-      },
-      {
-        time: "15:30 - 17:00",
-        title: "Closing Ceremony & Awards",
-        location: "Main Auditorium",
-        description: "Celebrate the conclusion of the event with special recognitions and final remarks.",
-        isKeyEvent: true
-      },
-    ],
-  },
+  }
 ];
 
 export default function Schedule() {
@@ -320,73 +216,129 @@ export default function Schedule() {
 
             {/* Timeline */}
             <div className="relative pl-8 md:pl-0">
+              {/* Timeline line - always visible for both days */}
               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 transform -translate-x-1/2" style={{ backgroundColor: `${schedule[activeDay].themeColor}20` }}></div>
               
-              {schedule[activeDay].events.map((event, eventIndex) => (
-                <div key={eventIndex} className="mb-8 relative">
-                  {/* Timeline dot */}
-                  <div 
-                    className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-md" 
-                    style={{ backgroundColor: event.isKeyEvent ? schedule[activeDay].accentColor : schedule[activeDay].themeColor }}
-                  ></div>
+              {activeDay === 0 ? (
+                // Day 1 - Multiple events
+                schedule[activeDay].events.map((event, eventIndex) => (
+                  <div key={eventIndex} className="mb-8 relative">
+                    {/* Timeline dot */}
+                    <div 
+                      className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-md" 
+                      style={{ backgroundColor: event.isKeyEvent ? schedule[activeDay].accentColor : schedule[activeDay].themeColor }}
+                    ></div>
+                    
+                    {/* Event card */}
+                    <div 
+                      className={`
+                        md:w-5/12 
+                        ${eventIndex % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'} 
+                        bg-white rounded-xl shadow-lg hover:shadow-xl
+                        transition-all duration-300
+                        ${expandedEvent === eventIndex ? 'transform scale-[1.02] md:scale-[1.03]' : ''}
+                      `}
+                      style={{ borderLeft: `4px solid ${event.isKeyEvent ? schedule[activeDay].accentColor : schedule[activeDay].themeColor}` }}
+                    >
+                      <div 
+                        className="p-6 cursor-pointer"
+                        onClick={() => setExpandedEvent(expandedEvent === eventIndex ? null : eventIndex)}
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
+                          {event.isKeyEvent && (
+                            <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[activeDay].accentColor }}>
+                              Key Event
+                            </span>
+                          )}
+                        </div>
+                        
+                        <div className="flex items-center text-gray-600 mb-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="font-mono">{event.time}</span>
+                          
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>{event.location}</span>
+                        </div>
+                        
+                        <AnimatePresence>
+                          {expandedEvent === eventIndex && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <p className="text-gray-600 mb-4">{event.description}</p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        
+                        {expandedEvent !== eventIndex && (
+                          <div className="flex justify-between items-center">
+                            <p className="text-gray-500 text-sm">Click for details</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                // Day 2 - Single national event, but maintain timeline style
+                <div className="mb-8 relative">
+                  {/* Timeline dot - REMOVED */}
                   
-                  {/* Event card */}
+                  {/* Event card - centered for single event */}
                   <div 
-                    className={`
-                      md:w-5/12 
-                      ${eventIndex % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'} 
-                      bg-white rounded-xl shadow-lg hover:shadow-xl
-                      transition-all duration-300
-                      ${expandedEvent === eventIndex ? 'transform scale-[1.02] md:scale-[1.03]' : ''}
-                    `}
-                    style={{ borderLeft: `4px solid ${event.isKeyEvent ? schedule[activeDay].accentColor : schedule[activeDay].themeColor}` }}
+                    className="md:w-8/12 mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    style={{ borderLeft: `4px solid ${schedule[1].accentColor}` }}
                   >
                     <div 
                       className="p-6 cursor-pointer"
-                      onClick={() => setExpandedEvent(expandedEvent === eventIndex ? null : eventIndex)}
+                      onClick={() => setExpandedEvent(expandedEvent === 0 ? null : 0)}
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
-                        {event.isKeyEvent && (
-                          <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[activeDay].accentColor }}>
-                            Key Event
-                          </span>
-                        )}
+                        <h3 className="text-xl font-bold text-gray-800">{schedule[1].events[0].title}</h3>
+                        <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[1].accentColor }}>
+                          Key Event
+                        </span>
                       </div>
                       
                       <div className="flex items-center text-gray-600 mb-3">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="font-mono">{event.time}</span>
+                        <span className="font-mono">{schedule[1].events[0].time}</span>
                         
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span>{event.location}</span>
+                        <span>{schedule[1].events[0].location}</span>
                       </div>
                       
                       <AnimatePresence>
-                        {expandedEvent === eventIndex && (
+                        {expandedEvent === 0 && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <p className="text-gray-600 mb-4">{event.description}</p>
-                            <button 
-                              className="px-4 py-2 text-white rounded-lg transition-colors hover:opacity-90" 
-                              style={{ backgroundColor: schedule[activeDay].themeColor }}
-                            >
-                              Reserve Your Spot
-                            </button>
+                            <p className="text-gray-600">{schedule[1].events[0].description}</p>
                           </motion.div>
                         )}
                       </AnimatePresence>
                       
-                      {expandedEvent !== eventIndex && (
+                      {expandedEvent !== 0 && (
                         <div className="flex justify-between items-center">
                           <p className="text-gray-500 text-sm">Click for details</p>
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -397,7 +349,7 @@ export default function Schedule() {
                     </div>
                   </div>
                 </div>
-              ))}
+              )}
             </div>
             
             {/* Register CTA */}
