@@ -25,7 +25,7 @@ export default function Home() {
               
               <div className="flex items-center justify-center md:justify-start mb-8">
                 <div className="w-10 h-1 bg-[#732424]"></div>
-                <p className="ml-4 text-lg font-medium text-gray-700">15 - 17 March</p>
+                <p className="ml-4 text-lg font-medium text-gray-700">20 - 21 December</p>
                 <div className="w-10 h-1 bg-[#E47D30] ml-4"></div>
               </div>
               
@@ -81,7 +81,7 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span>Conference: 15 March</span>
+                <span>Conference: 20 December</span>
               </div>
               <div className="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -94,7 +94,7 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Workshops: 16-17 March</span>
+                <span>National Event: 21 December</span>
               </div>
             </div>
           </div>

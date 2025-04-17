@@ -1,55 +1,132 @@
+'use client';
+
 import Link from 'next/link';
-import RotatingSponsorsPage from '../../components/RotatingSponsorsPage';
+import { useState } from 'react';
+import Image from 'next/image';
 import { PageLayout } from '../../components/ui/PageLayout';
 
 // Sponsorship packages
 const sponsorshipTiers = [
   {
-    name: 'Platinum Sponsor',
-    price: '₹50,000',
-    color: '#732424',
+    id: 'diamond',
+    name: 'Diamond Sponsor',
+    price: '$15,000',
+    color: '#1F52A4', // Deep blue
+    valueIncluded: '$2,500',
     benefits: [
+      'Includes 3 hotel rooms for 2 nights',
+      '6 Banquet Tickets and 6 Event Tickets',
+      'Full page in Brochure for business',
+      'Call on stage and facilitated with shawl',
       'Premium logo placement on all event materials',
-      'VIP access for 5 representatives',
       'Speaking opportunity at main event',
-      'Exhibition booth in prime location',
-      'Full-page advertisement in event brochure',
+      'Exhibition booth in prime location'
     ],
   },
   {
+    id: 'platinum',
+    name: 'Platinum Sponsor',
+    price: '$10,000',
+    color: '#732424', // Maroon
+    valueIncluded: '$2,000',
+    benefits: [
+      'Includes 2 hotel rooms for 2 nights',
+      '4 Banquet Tickets and 4 Event Tickets',
+      'Full page in Brochure for business',
+      'Call on stage and facilitated with shawl',
+      'Premium logo placement on event materials',
+      'Exhibition booth in prime location'
+    ],
+  },
+  {
+    id: 'gold',
     name: 'Gold Sponsor',
-    price: '₹30,000',
-    color: '#9E3030',
+    price: '$7,500',
+    color: '#9E3030', // Lighter maroon
+    valueIncluded: '$1,500',
     benefits: [
+      'Includes 1 hotel room for 2 nights',
+      '4 Banquet Tickets and 4 Event Tickets',
+      'Half a page in Brochure for their business',
+      'Call on stage and facilitated with shawl',
       'Logo placement on event materials',
-      'VIP access for 3 representatives',
-      'Exhibition booth',
-      'Half-page advertisement in event brochure',
+      'Exhibition booth'
     ],
   },
   {
+    id: 'silver',
     name: 'Silver Sponsor',
-    price: '₹15,000',
-    color: '#4B5563',
+    price: '$5,000',
+    color: '#4B5563', // Gray
+    valueIncluded: '$1,200',
     benefits: [
+      'Includes 1 hotel room for 2 nights',
+      '4 Banquet Tickets and 4 Event Tickets',
+      'Quarter page ad or picture in Brochure',
       'Logo placement on event website',
-      'VIP access for 2 representatives',
-      'Quarter-page advertisement in event brochure',
+      'Recognition during the event'
     ],
   },
   {
+    id: 'bronze',
     name: 'Bronze Sponsor',
-    price: '₹5,000',
-    color: '#CD7F32',
+    price: '$2,500',
+    color: '#CD7F32', // Bronze
+    valueIncluded: '$500',
     benefits: [
+      'Includes 2 Banquet Tickets and 4 Event Tickets',
+      'Name will be listed in the Brochure',
       'Logo placement on event website',
-      'VIP access for 1 representative',
-      'Mention in event brochure',
+      'Recognition during the event'
+    ],
+  },
+  {
+    id: 'basic',
+    name: 'Basic Sponsor',
+    price: '$1,000',
+    color: '#6B7280', // Light gray
+    valueIncluded: '$350',
+    benefits: [
+      'Includes 1 Banquet Ticket and 4 Event Tickets',
+      'Name will be listed in the Brochure',
+      'Logo placement on event website'
     ],
   },
 ];
 
+// Sample sponsorship categories for the UI display
+const sponsorCategories = ['diamond', 'platinum', 'gold', 'silver', 'bronze', 'basic'];
+
+// Dummy sponsors data
+const dummySponsors = {
+  diamond: [
+    // Diamond sponsors will appear here
+  ],
+  platinum: [
+    { id: 1, name: 'TechCorp Industries', logo: '/placeholder.jpg', website: 'example.com' }
+  ],
+  gold: [
+    // Gold sponsors will appear here
+  ],
+  silver: [
+    // Silver sponsors will appear here
+  ],
+  bronze: [
+    // Bronze sponsors will appear here
+  ],
+  basic: [
+    // Basic sponsors will appear here
+  ]
+};
+
 export default function SponsorsPage() {
+  const [activeTier, setActiveTier] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<string>('platinum');
+
+  const handleTierClick = (tierId: string) => {
+    setActiveTier(tierId === activeTier ? null : tierId);
+  };
+
   return (
     <PageLayout maxWidth="full">
       {/* Hero section with background image and overlay */}
@@ -57,10 +134,10 @@ export default function SponsorsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#732424] to-[#9E3030] opacity-90"></div>
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         
-        <div className="relative container mx-auto px-4 py-28">
+        <div className="relative container mx-auto px-4 py-16 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl font-bold mb-6">Partner With Us</h1>
-            <p className="text-xl leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
               Join our community of sponsors and gain valuable brand exposure while supporting our cultural celebration.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -89,65 +166,128 @@ export default function SponsorsPage() {
       </div>
 
       {/* Current sponsors section */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Our Sponsors</span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Organizations That Support Us</h2>
-            <div className="w-24 h-1 bg-[#732424] mx-auto"></div>
+          <div className="text-center mb-4">
+            <span className="text-sm text-[#732424] font-medium">Our Sponsors</span>
+            <h2 className="text-3xl font-bold text-gray-900 mt-1 mb-8">Organizations That Support Us</h2>
           </div>
           
-          <RotatingSponsorsPage />
+          {/* Sponsor category tabs */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex overflow-hidden border border-gray-200 rounded-lg">
+              {sponsorCategories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveTab(category)}
+                  className={`px-4 py-2 text-sm font-medium capitalize ${
+                    activeTab === category 
+                      ? 'bg-[#732424] text-white' 
+                      : 'bg-white text-gray-800 hover:bg-gray-50'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Sponsor category title */}
+          <h3 className="text-xl font-bold text-center mb-8 text-[#732424] capitalize">
+            {activeTab} Sponsors
+          </h3>
+          
+          {/* Sponsors grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {dummySponsors[activeTab as keyof typeof dummySponsors]?.map((sponsor) => (
+              <div key={sponsor.id} className="border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow">
+                <div className="p-6 flex items-center justify-center">
+                  {/* Placeholder for sponsor logo */}
+                  <div className="w-full h-32 bg-gray-100 flex items-center justify-center">
+                    {sponsor.logo ? (
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-[#732424] font-medium">{sponsor.name}</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <span className="text-gray-400">{sponsor.name}</span>
+                    )}
+                  </div>
+                </div>
+                {sponsor.website && (
+                  <div className="p-2 text-center text-sm text-gray-500">
+                    {sponsor.website}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            {/* Show message if no sponsors in category */}
+            {(!dummySponsors[activeTab as keyof typeof dummySponsors] || 
+              dummySponsors[activeTab as keyof typeof dummySponsors].length === 0) && (
+              <div className="col-span-full text-center py-10">
+                <p className="text-gray-500">No {activeTab} sponsors yet.</p>
+              </div>
+            )}
+          </div>
+          
+          {/* Apply as sponsor CTA */}
+          <div className="mt-10 max-w-4xl mx-auto bg-gray-50 rounded-lg p-6 text-center">
+            <p className="text-gray-600 mb-4">Interested in becoming a {activeTab} sponsor?</p>
+            <button 
+              onClick={() => handleTierClick(activeTab)}
+              className="px-6 py-2 bg-[#732424] text-white font-medium rounded-lg hover:bg-[#5a1c1c] transition-colors"
+            >
+              Apply as {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Sponsor
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Separator with decorative elements */}
-      <div className="relative py-16 bg-gray-50">
-        <div className="absolute top-0 inset-x-0 flex justify-center">
-          <div className="w-32 h-1 bg-[#732424]"></div>
-        </div>
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-3">Why Become a Sponsor?</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your sponsorship helps make our event possible while providing your brand with visibility to our engaged community.
-          </p>
-        </div>
-        
-        {/* Benefits of sponsorship */}
-        <div className="container mx-auto px-4 mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Community Engagement</h3>
-              <p className="text-gray-600">Connect with a dedicated community of attendees and build lasting relationships.</p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Brand Visibility</h3>
-              <p className="text-gray-600">Showcase your brand across our event materials, website, and social media channels.</p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-xl shadow-sm text-center">
-              <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Cultural Support</h3>
-              <p className="text-gray-600">Demonstrate your commitment to cultural events and community development.</p>
-            </div>
+      {/* Why become a sponsor section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <div className="w-24 h-1 bg-[#732424] mx-auto mb-6"></div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Why Become a {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Sponsor?</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Your sponsorship helps make our event possible while providing your brand with visibility to our engaged community.
+            </p>
           </div>
+          
+          {/* Specific sponsorship tier details */}
+          {sponsorshipTiers.filter(tier => tier.id === activeTab).map((tier) => (
+            <div key={tier.id} className="max-w-3xl mx-auto mb-16 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="p-6">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900">{tier.name} - {tier.price}</h3>
+                  <p className="text-sm text-gray-500 mt-1">Total Value Included: {tier.valueIncluded}</p>
+                </div>
+                
+                <div className="space-y-3 mt-4">
+                  {tier.benefits.map((benefit, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-gray-700">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="mt-6">
+                  <button
+                    className="px-5 py-2 bg-[#732424] text-white font-medium rounded-lg hover:bg-[#5a1c1c] transition-colors"
+                  >
+                    Become a {tier.name}
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </section>
 
       {/* Sponsorship packages section */}
       <section id="packages" className="py-20 bg-white">
@@ -160,7 +300,7 @@ export default function SponsorsPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sponsorshipTiers.map((tier, index) => (
               <div key={index} className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#732424]/5 to-[#732424]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
