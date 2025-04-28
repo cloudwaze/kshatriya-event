@@ -74,16 +74,10 @@ export default function Navbar() {
                   Schedule
                 </Link>
                 <Link 
-                  href="/sponsors" 
-                  className={`font-semibold text-lg transition-colors ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
-                >
-                  Sponsors
-                </Link>
-                <Link 
                   href="/register" 
                   className={`font-semibold text-lg transition-colors ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Register
+                  Packages
                 </Link>
               </div>
             </div>
@@ -139,16 +133,10 @@ export default function Navbar() {
                   Schedule
                 </Link>
                 <Link 
-                  href="/sponsors" 
-                  className={`block px-4 py-2 font-semibold ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
-                >
-                  Sponsors
-                </Link>
-                <Link 
                   href="/register" 
                   className={`block px-4 py-2 font-semibold ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Register
+                  Packages
                 </Link>
               </div>
             </div>

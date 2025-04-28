@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="bg-gradient-to-br from-[#FAF7F2] via-[#fff7e6] to-[#fbeee0] min-h-screen">
         <header>
           <Navbar />
         </header>
