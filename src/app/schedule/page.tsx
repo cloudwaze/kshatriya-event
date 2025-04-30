@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 // Schedule data with enhanced structure
 const schedule = [
@@ -13,42 +14,54 @@ const schedule = [
     themeColor: "#732424",
     accentColor: "#9E3030",
     icon: "🍽️",
-    description: `Join us for a rich day of matrimonial connections, youth empowerment, entrepreneurial insights, and an elegant evening banquet. 
+    description: `Join us for a day of wellness, matrimonial connections, entrepreneurial insights, and an elegant evening banquet. 
     Each carefully designed event brings together our community to celebrate culture, build relationships, and foster personal and professional growth.`,
     highlights: [
+      "Morning yoga session for wellness",
       "Matrimonial event for community connections",
-      "Youth empowerment sessions and activities",
       "Entrepreneurial networking and knowledge sharing",
       "Grand Banquet dinner and cultural celebration"
     ],
     events: [
       {
-        time: "Morning",
+        time: "7:00 AM - 8:00 AM",
+        title: "Yoga Session",
+        location: "TBD",
+        description: "Start your day with an invigorating yoga session to energize your body and mind.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/yoga.jpg"
+      },
+      {
+        time: "9:00 AM - 3:00 PM",
         title: "Matrimonial Event",
-        location: "Main Hall",
-        description: "Saturday Morning, December 20, 2025 - A thoughtfully organized event to build meaningful connections within our community.",
-        isKeyEvent: true
+        location: "TBD",
+        description: "Registration starts at 9:00 AM. A thoughtfully organized event to build meaningful connections within our community.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/matrimony.jpg"
       },
       {
-        time: "Afternoon",
-        title: "Empower Youth Event",
-        location: "Youth Center",
-        description: "Saturday Afternoon, December 20, 2025 - Inspiring the next generation through mentorship, activities, and engaging discussions.",
-        isKeyEvent: true
-      },
-      {
-        time: "Afternoon",
+        time: "3:00 PM - 5:00 PM",
         title: "Entrepreneurship",
-        location: "Conference Room A",
-        description: "Saturday Afternoon, December 20, 2025 - Connect with successful entrepreneurs and gain valuable insights for your business journey.",
-        isKeyEvent: true
+        location: "TBD",
+        description: "Connect with successful entrepreneurs and gain valuable insights for your business journey.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/entrepreneurship.jpg"
       },
       {
-        time: "Evening",
+        time: "6:00 PM - 10:00 PM",
         title: "Banquet",
-        location: "Grand Banquet Hall",
-        description: "Saturday Evening, December 20, 2025 - An elegant dinner with cultural performances and community celebration.",
-        isKeyEvent: true
+        location: "TBD",
+        description: "An elegant dinner with cultural performances and community celebration.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/banquet.jpg"
+      },
+      {
+        time: "Throughout the Day",
+        title: "Focused Events",
+        location: "TBD",
+        description: "Additional focused events and activities. Further details will be shared later.",
+        isKeyEvent: false,
+        image: "/kshatriya-event/images/focused-events.jpg"
       }
     ],
   },
@@ -70,11 +83,12 @@ const schedule = [
     ],
     events: [
       {
-        time: "All Day",
-        title: "National Event",
-        location: "Main Convention Center",
-        description: "All Day Sunday, December 21, 2025 - A comprehensive national gathering with multiple activities, performances, and sessions throughout the day.",
-        isKeyEvent: true
+        time: "TBD",
+        title: "Main Event Schedule",
+        location: "TBD",
+        description: "The detailed schedule for the main event will be finalized and shared soon.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/main-event.jpg"
       }
     ],
   }
@@ -244,49 +258,44 @@ export default function Schedule() {
                         className="p-6 cursor-pointer"
                         onClick={() => setExpandedEvent(expandedEvent === eventIndex ? null : eventIndex)}
                       >
+                        <div className="relative h-48 mb-4 rounded-lg overflow-hidden group">
+                          <div 
+                            className="absolute inset-0 bg-cover bg-center transform transition-transform duration-300 group-hover:scale-105"
+                            style={{ 
+                              backgroundImage: `url(${event.image})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center top'
+                            }}
+                          >
+                            {/* Gradient overlay for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 className={`font-bold text-white mb-1 ${
+                              event.title === "Entrepreneurship" ? "text-xl" : "text-2xl"
+                            }`}>{event.title}</h3>
+                            <div className="flex items-center text-white/90 text-sm">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>{event.time}</span>
+                            </div>
+                          </div>
+                        </div>
                         <div className="flex justify-between items-start mb-2">
-                          <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
+                          <div>
+                            <p className="text-gray-600 text-sm mb-2">{event.location}</p>
+                            <p className="text-gray-700">{event.description}</p>
+                          </div>
                           {event.isKeyEvent && (
-                            <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[activeDay].accentColor }}>
+                            <span 
+                              className="text-white text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wide"
+                              style={{ backgroundColor: schedule[activeDay].accentColor }}
+                            >
                               Key Event
                             </span>
                           )}
                         </div>
-                        
-                        <div className="flex items-center text-gray-600 mb-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="font-mono">{event.time}</span>
-                          
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          <span>{event.location}</span>
-                        </div>
-                        
-                        <AnimatePresence>
-                          {expandedEvent === eventIndex && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <p className="text-gray-600 mb-4">{event.description}</p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                        
-                        {expandedEvent !== eventIndex && (
-                          <div className="flex justify-between items-center">
-                            <p className="text-gray-500 text-sm">Click for details</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>

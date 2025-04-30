@@ -49,11 +49,12 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo.svg`}
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/logo.png`}
                   alt="Kshatriya Logo"
                   width={60}
                   height={60}
                   className="text-[#FDB347]"
+                  priority
                 />
               </Link>
             </div>
@@ -71,13 +72,19 @@ export default function Navbar() {
                   href="/schedule" 
                   className={`font-semibold text-lg transition-colors ${isActive('/schedule') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Schedule
+                  Event Schedule
+                </Link>
+                <Link 
+                  href="/packages" 
+                  className={`font-semibold text-lg transition-colors ${isActive('/packages') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                >
+                  Packages
                 </Link>
                 <Link 
                   href="/register" 
                   className={`font-semibold text-lg transition-colors ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Packages
+                  Register
                 </Link>
               </div>
             </div>
@@ -130,13 +137,19 @@ export default function Navbar() {
                   href="/schedule" 
                   className={`block px-4 py-2 font-semibold ${isActive('/schedule') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Schedule
+                  Event Schedule
+                </Link>
+                <Link 
+                  href="/packages" 
+                  className={`block px-4 py-2 font-semibold ${isActive('/packages') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                >
+                  Packages
                 </Link>
                 <Link 
                   href="/register" 
                   className={`block px-4 py-2 font-semibold ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Packages
+                  Register
                 </Link>
               </div>
             </div>
