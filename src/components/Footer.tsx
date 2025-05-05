@@ -65,8 +65,9 @@ export default function Footer() {
           <h3 className="text-lg font-bold mb-3">Quick Links</h3>
           <div className="flex flex-col space-y-2">
             <Link href="/schedule" className="hover:text-[#FDB347] transition-colors">Event Schedule</Link>
-            <Link href="/sponsors" className="hover:text-[#FDB347] transition-colors">Our Sponsors</Link>
-            <Link href="/register" className="hover:text-[#FDB347] transition-colors">Registration</Link>
+            <Link href="/sponsors" className="hover:text-[#FDB347] transition-colors">Packages</Link>
+            <Link href="/register" className="hover:text-[#FDB347] transition-colors">Event Tickets</Link>
+            <Link href="/participation-forms" className="hover:text-[#FDB347] transition-colors">Participation Forms</Link>
             <Link href="/support" className="hover:text-[#FDB347] transition-colors">Support & FAQ</Link>
           </div>
         </div>

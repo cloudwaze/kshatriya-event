@@ -75,8 +75,8 @@ export default function Navbar() {
                   Event Schedule
                 </Link>
                 <Link 
-                  href="/packages" 
-                  className={`font-semibold text-lg transition-colors ${isActive('/packages') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                  href="/sponsors" 
+                  className={`font-semibold text-lg transition-colors ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Packages
                 </Link>
@@ -84,7 +84,13 @@ export default function Navbar() {
                   href="/register" 
                   className={`font-semibold text-lg transition-colors ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Register
+                  Event Tickets
+                </Link>
+                <Link 
+                  href="/participation-forms" 
+                  className={`font-semibold text-lg transition-colors ${isActive('/participation-forms') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                >
+                  Participation Forms
                 </Link>
               </div>
             </div>
@@ -140,8 +146,8 @@ export default function Navbar() {
                   Event Schedule
                 </Link>
                 <Link 
-                  href="/packages" 
-                  className={`block px-4 py-2 font-semibold ${isActive('/packages') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                  href="/sponsors" 
+                  className={`block px-4 py-2 font-semibold ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Packages
                 </Link>
@@ -149,7 +155,13 @@ export default function Navbar() {
                   href="/register" 
                   className={`block px-4 py-2 font-semibold ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Register
+                  Event Tickets
+                </Link>
+                <Link 
+                  href="/participation-forms" 
+                  className={`block px-4 py-2 font-semibold ${isActive('/participation-forms') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
+                >
+                  Participation Forms
                 </Link>
               </div>
             </div>
