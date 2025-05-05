@@ -130,9 +130,7 @@ export default function ParticipationFormsPage() {
             </div>
             
             <div className="mt-10">
-              <Link href="/register" className="inline-block px-6 py-3 bg-[#732424] text-white rounded-lg font-semibold hover:bg-[#9E3030] transition-colors">
-                Back to Registration
-              </Link>
+              {/* Link removed */}
             </div>
           </div>
         </div>

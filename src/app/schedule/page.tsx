@@ -61,7 +61,7 @@ const schedule = [
         location: "TBD",
         description: "Additional focused events and activities. Further details will be shared later.",
         isKeyEvent: false,
-        image: "/kshatriya-event/images/focused-events.jpg"
+        image: "/kshatriya-event/images/focusedevents.jpg"
       }
     ],
   },
@@ -88,7 +88,15 @@ const schedule = [
         location: "TBD",
         description: "The detailed schedule for the main event will be finalized and shared soon.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/main-event.jpg"
+        image: "/kshatriya-event/images/main_event.webp"
+      },
+      {
+        time: "Throughout the Day",
+        title: "Cultural Activities",
+        location: "TBD",
+        description: "Various cultural performances and activities throughout the day.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/cultutral_event.jpg"
       }
     ],
   }
@@ -157,37 +165,22 @@ export default function Schedule() {
             {/* Day Overview */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-12">
               <div className="md:flex">
-                {/* Placeholder design instead of image */}
+                {/* Image background instead of placeholder */}
                 <div className="md:w-1/2 h-64 md:h-auto relative">
                   <div 
                     className="absolute inset-0 overflow-hidden"
-                    style={{
-                      background: `linear-gradient(135deg, ${schedule[activeDay].themeColor}, ${schedule[activeDay].accentColor})`,
-                    }}
                   >
-                    {/* Pattern overlay */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-0 right-0 w-full h-full">
-                        <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
-                          <defs>
-                            <pattern id={`grid-${activeDay}`} width="8" height="8" patternUnits="userSpaceOnUse">
-                              <path d="M 8 0 L 0 0 0 8" fill="none" stroke="white" strokeWidth="0.5" />
-                            </pattern>
-                          </defs>
-                          <rect width="100" height="100" fill={`url(#grid-${activeDay})`} />
-                        </svg>
-                      </div>
-                    </div>
-                    
-                    {/* Decorative elements */}
-                    <div className="absolute inset-0 opacity-30">
-                      <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full border-4 border-white"></div>
-                      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full border-2 border-white"></div>
-                    </div>
-                    
-                    {/* Event icon */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-8xl opacity-40">{schedule[activeDay].icon}</span>
+                    {/* Background image */}
+                    <div className="absolute inset-0">
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/${activeDay === 0 ? 'cultutral_event.jpg' : 'main_event.webp'}`}
+                        alt={activeDay === 0 ? "Cultural Events" : "Main Event"}
+                        fill
+                        style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                        priority
+                      />
+                      {/* Overlay with theme color */}
+                      <div className="absolute inset-0" style={{ backgroundColor: `${schedule[activeDay].themeColor}`, opacity: 0.7, mixBlendMode: 'multiply' }}></div>
                     </div>
                     
                     {/* Day info */}

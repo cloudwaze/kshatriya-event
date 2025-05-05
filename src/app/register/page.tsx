@@ -71,7 +71,7 @@ export default function RegisterPage() {
           <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
             <h2 className="text-xl font-semibold text-primary mb-2">Banquet</h2>
             <p className="text-2xl font-bold text-secondary mb-2">$150</p>
-            <p className="text-gray-700 mb-4">Evening banquet with dinner, entertainment, and networking. <span className="font-semibold text-green-700">Age 21 and above</span></p>
+            <p className="text-gray-700 mb-4">Evening banquet. <span className="font-semibold text-green-700">Age 21 and above</span>. Includes gourmet dinner.</p>
             <a href={zeffyLinks.banquet} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
           </div>
           {/* Matrimony */}
