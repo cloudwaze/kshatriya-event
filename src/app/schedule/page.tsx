@@ -57,6 +57,14 @@ const schedule = [
       },
       {
         time: "Throughout the Day",
+        title: "Cultural Activities",
+        location: "TBD",
+        description: "Various cultural performances and activities throughout the day.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/cultutral_event.jpg"
+      },
+      {
+        time: "Throughout the Day",
         title: "Focused Events",
         location: "TBD",
         description: "Additional focused events and activities. Further details will be shared later.",
@@ -173,14 +181,16 @@ export default function Schedule() {
                     {/* Background image */}
                     <div className="absolute inset-0">
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/${activeDay === 0 ? 'cultutral_event.jpg' : 'main_event.webp'}`}
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/${activeDay === 0 ? 'cultutral_event.jpeg' : 'main-event.jpeg'}`}
                         alt={activeDay === 0 ? "Cultural Events" : "Main Event"}
                         fill
                         style={{ objectFit: 'cover', objectPosition: 'center center' }}
                         priority
                       />
                       {/* Overlay with theme color */}
-                      <div className="absolute inset-0" style={{ backgroundColor: `${schedule[activeDay].themeColor}`, opacity: 0.7, mixBlendMode: 'multiply' }}></div>
+                      <div className="absolute inset-0" style={{ backgroundColor: `${schedule[activeDay].themeColor}`, opacity: 0.2, mixBlendMode: 'multiply' }}></div>
+                      {/* Gradient overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
                     </div>
                     
                     {/* Day info */}
@@ -261,7 +271,7 @@ export default function Schedule() {
                             }}
                           >
                             {/* Gradient overlay for better text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                           </div>
                           <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
                             <h3 className={`font-bold text-white mb-1 ${

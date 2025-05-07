@@ -136,8 +136,8 @@ export default function SponsorsPage() {
               You will receive a tax receipt for your donation.
             </p>
           </div>
-        </div>
-      </div>
+                    </div>
+                </div>
 
       {/* Sponsorship packages section */}
       <section id="packages" className="py-20 bg-white">
@@ -159,7 +159,7 @@ export default function SponsorsPage() {
                     <h3 className="text-2xl font-bold mb-1" style={{ color: tier.color }}>{tier.name}</h3>
                     <div className="flex items-baseline mb-6">
                       <span className="text-4xl font-extrabold text-gray-900">{tier.price}</span>
-                      <span className="ml-2 text-sm text-gray-500">Total Value: {tier.valueIncluded}</span>
+                      <span className="ml-2 text-sm text-gray-500">Included Value: {tier.valueIncluded}</span>
                     </div>
                     <div className="pt-2 pb-4">
                       <ul className="space-y-3">
@@ -201,8 +201,8 @@ export default function SponsorsPage() {
                         <svg className="w-14 h-14 text-[#732424]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                      </div>
-                    </div>
+          </div>
+        </div>
                     
                     <div className="md:w-3/4 text-center md:text-left">
                       <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Custom Support</span>
@@ -220,7 +220,7 @@ export default function SponsorsPage() {
                         >
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                          </svg>
+            </svg>
                           <span>Donate Now</span>
                         </a>
                         <Link 

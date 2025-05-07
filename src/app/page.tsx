@@ -12,35 +12,21 @@ export default function Home() {
   return (
     <PageLayout maxWidth="full">
       {/* Hero Section - Enhanced Design */}
-      <div className="relative min-h-[80vh] flex items-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[#732424]/90 mix-blend-multiply"></div>
-          <Image 
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/cowboy-theme-placeholder.png`} 
-            alt="Event Background" 
-            fill 
-            style={{ 
-              objectFit: 'cover', 
-              objectPosition: 'center 100%',
-              transform: 'translateY(-11%)' 
-            }}
-            priority
-            className="w-full h-full"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent"></div>
-        </div>
+      <div className="relative min-h-[80vh] flex items-center bg-[#732424]">
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#732424] to-[#9E3030] opacity-90"></div>
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         
         {/* Hero Content */}
         <div className="container relative mx-auto px-4 py-20 flex flex-col items-center justify-center text-center z-10">
           {/* Main Heading */}
           <h1 className="text-4xl md:text-7xl font-bold mb-4 text-white drop-shadow-lg">
-            Kshatriya (KANA) National Event
+            The Kshatriyas National Event
           </h1>
           
           {/* Tagline */}
           <p className="text-xl md:text-2xl font-semibold text-[#FDB347] mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Celebrating Our Heritage, Building Our Future
+            Connect Generations, Celebrate Heritage, Contribute Growth
           </p>
           
           {/* Event Date & Location */}
@@ -71,13 +57,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/register" 
-              className="px-8 py-4 bg-white/20 backdrop-blur-sm border-2 border-white text-white font-bold rounded-lg shadow-lg hover:bg-white/30 transition-all transform hover:-translate-y-1"
+              className="px-8 py-4 bg-white text-[#732424] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Get Your Tickets
             </Link>
             <Link 
               href="/sponsors" 
-              className="px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold rounded-lg shadow-md hover:bg-white/20 transition-all transform hover:-translate-y-1"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             >
               View Premium Packages
             </Link>
@@ -142,7 +128,7 @@ export default function Home() {
                 <p className="text-gray-700 text-center">
                   Create lasting memories with activities designed for all ages, from children's programs to matrimonial events.
                 </p>
-              </div>
+            </div>
             </div>
 
             <div className="text-center mt-12">
@@ -156,7 +142,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      
       {/* Event Highlights Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -233,7 +219,7 @@ export default function Home() {
               {/* Highlight 4: Networking */}
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
-                  <Image
+              <Image
                     src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/entrepreneurship.jpg`}
                     alt="Networking Opportunities"
                     width={600}
@@ -312,11 +298,6 @@ export default function Home() {
               
               {/* Banquet Package */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ring-2 ring-[#FDB347] ring-opacity-50">
-                <div className="absolute top-0 right-0">
-                  <div className="bg-[#FDB347] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    POPULAR
-                  </div>
-                </div>
                 <div className="bg-primary p-6 text-center">
                   <h3 className="text-xl font-bold text-white">Banquet</h3>
                   <div className="text-3xl font-bold text-white mt-2">$150</div>
@@ -468,11 +449,6 @@ export default function Home() {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-b from-[#A0522D]/5 to-[#A0522D]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
-                <div className="absolute top-0 right-0">
-                  <div className="bg-[#A0522D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    POPULAR
-                  </div>
-                </div>
                 <div className="px-6 pt-8 pb-6">
                   <h3 className="text-2xl font-bold mb-1 text-[#A0522D]">Bronze Plus</h3>
                   <div className="flex items-baseline mb-6">
@@ -563,8 +539,250 @@ export default function Home() {
               href="/sponsors" 
               className="inline-block px-6 py-4 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors"
             >
-              View All Ticket Options
+              View Package Options
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Things to Do Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Travel & Explore</span>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Travel Information & Things to Do</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Plan your visit to the Kshatriya National Event with our comprehensive travel guide and discover the best of Dallas-Fort Worth
+            </p>
+            <div className="w-24 h-1 bg-[#FDB347] mx-auto mt-8"></div>
+          </div>
+
+          {/* Travel Information */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-[#732424] mb-6">Getting Here</h3>
+              
+              {/* Airports */}
+              <div className="mb-8">
+                <h4 className="text-xl font-semibold text-gray-900 mb-4">Nearest Airports</h4>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-[#FDB347] mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Dallas Fort Worth International (DFW)</h5>
+                      <p className="text-gray-600">~25 miles (~30-35 mins drive)</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <svg className="w-6 h-6 text-[#FDB347] mr-3 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <h5 className="font-semibold text-gray-900">Dallas Love Field (DAL)</h5>
+                      <p className="text-gray-600">~22 miles (~30-35 mins drive)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Transportation */}
+              <div>
+                <h4 className="text-xl font-semibold text-gray-900 mb-4">Transportation Options</h4>
+                <div className="flex flex-wrap gap-4">
+                  <span className="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Uber</span>
+                  <span className="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Lyft</span>
+                  <span className="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Rental Cars</span>
+                  <span className="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Local Shuttles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Hotel Information */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-[#732424] mb-6">Official Event Hotel</h3>
+              
+              <div className="mb-8">
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                  <div className="flex-1">
+                    <h4 className="text-xl font-semibold text-gray-900 mb-4">Frisco Embassy Suites Hotel</h4>
+                    <p className="text-gray-600 mb-4">
+                      Enjoy a comfortable stay at our official event hotel, featuring spacious suites and complimentary breakfast.
+                    </p>
+                    <div className="bg-[#732424]/5 rounded-lg p-4 mb-6">
+                      <p className="text-[#732424] font-semibold">Special discount available for event attendees</p>
+                      <p className="text-gray-600 text-sm">Contact hotel for rates and availability</p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <a 
+                        href="https://www.hilton.com/en/hotels/dfwfses-embassy-suites-dallas-frisco-hotel-convention-center/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center justify-center px-6 py-3 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors"
+                      >
+                        Book Now
+                        <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                      <a 
+                        href="tel:+19723788800" 
+                        className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#732424] text-[#732424] font-semibold rounded-lg hover:bg-[#732424]/5 transition-colors"
+                      >
+                        Call Hotel
+                        <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Nearby Attractions */}
+            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="w-16 h-16 bg-[#732424]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <svg className="w-8 h-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#732424] mb-4 text-center">Nearby Attractions</h3>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Legacy West (Plano)
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  PGA Frisco
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Grandscape
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Universal Kids Resort (Coming Soon)
+                </li>
+              </ul>
+            </div>
+
+            {/* Dallas Attractions */}
+            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="w-16 h-16 bg-[#732424]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <svg className="w-8 h-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#732424] mb-4 text-center">Dallas Attractions</h3>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  The Sixth Floor Museum
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Dallas Museum of Art
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Perot Museum
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Deep Ellum
+                </li>
+              </ul>
+            </div>
+
+            {/* Fort Worth Attractions */}
+            <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="w-16 h-16 bg-[#732424]/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                <svg className="w-8 h-8 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#732424] mb-4 text-center">Fort Worth Attractions</h3>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Fort Worth Stockyards
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Sundance Square
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Fort Worth Zoo
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-5 h-5 text-[#FDB347] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Modern Art Museum
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Tourism Resources */}
+          <div className="mt-16 text-center">
+            <p className="text-gray-600 mb-6">
+              For more information about attractions and activities in the Dallas-Fort Worth area, visit the official tourism websites:
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="https://www.visitdallas.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center px-6 py-3 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors"
+              >
+                Dallas Tourism
+                <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a 
+                href="https://www.fortworth.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center px-6 py-3 border-2 border-[#732424] text-[#732424] font-semibold rounded-lg hover:bg-[#732424]/5 transition-colors"
+              >
+                Fort Worth Tourism
+                <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -589,7 +807,7 @@ export default function Home() {
                 className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg shadow-md hover:bg-white/10 transition-all transform hover:-translate-y-1"
               >
                 View Full Schedule
-              </Link>
+          </Link>
             </div>
           </div>
         </div>

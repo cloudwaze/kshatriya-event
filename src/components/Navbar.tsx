@@ -17,6 +17,11 @@ export default function Navbar() {
     return false;
   };
 
+  // Function to close menu
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   // Listen for scroll events to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
@@ -135,30 +140,35 @@ export default function Navbar() {
               <div className="space-y-2">
                 <Link 
                   href="/" 
+                  onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   HOME
                 </Link>
                 <Link 
                   href="/schedule" 
+                  onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/schedule') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Event Schedule
                 </Link>
                 <Link 
                   href="/sponsors" 
+                  onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Packages
                 </Link>
                 <Link 
                   href="/register" 
+                  onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/register') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Event Tickets
                 </Link>
                 <Link 
                   href="/participation-forms" 
+                  onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/participation-forms') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
                   Participation Forms
