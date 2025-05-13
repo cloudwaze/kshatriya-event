@@ -12,13 +12,25 @@ export default function Home() {
   return (
     <PageLayout maxWidth="full">
       {/* Hero Section - Enhanced Design */}
-      <div className="relative min-h-[80vh] flex items-center bg-[#732424]">
+      <div className="relative min-h-[80vh] flex items-center bg-[rgb(87,4,4)]">
         {/* Background Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#732424] to-[#9E3030] opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(87,4,4)] to-[rgb(105,4,4)] opacity-100"></div>
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         
         {/* Hero Content */}
         <div className="container relative mx-auto px-4 py-20 flex flex-col items-center justify-center text-center z-10">
+          {/* Logo */}
+          <div className="mb-8 max-w-[800px] w-full">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main_logo.png`}
+              alt="Kshatriya National Event Logo"
+              width={800}
+              height={800}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+          
           {/* Main Heading */}
           <h1 className="text-4xl md:text-7xl font-bold mb-4 text-white drop-shadow-lg">
             The Kshatriyas National Event
@@ -57,10 +69,21 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/register" 
-              className="px-8 py-4 bg-white text-[#732424] font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             >
               Get Your Tickets
             </Link>
+            <a 
+              href="https://www.hilton.com/en/attend-my-event/thekshatriyasnationalevent-dallas2025/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              Book Your Hotel
+            </a>
             <Link 
               href="/sponsors" 
               className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
@@ -77,6 +100,57 @@ export default function Home() {
           </svg>
         </div>
       </div>
+
+      {/* Hotel Information - Moved to top */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="grid md:grid-cols-2">
+                {/* Image Section */}
+                <div className="relative h-[400px] md:h-auto">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/hotel.jpg`}
+                    alt="Frisco Embassy Suites Hotel"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                
+                {/* Content Section */}
+                <div className="p-8 md:p-12">
+                  <div className="mb-8">
+                    <h2 className="text-3xl font-bold text-[#732424] mb-4">Book Your Stay</h2>
+                    <div className="w-24 h-1 bg-[#732424] mb-6"></div>
+                    <p className="text-lg text-gray-600">
+                      Reserve your room at our event hotel
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">Frisco Embassy Suites Hotel</h3>
+                    <p className="text-gray-600 mb-6">
+                      Special event rates available for attendees.
+                    </p>
+                    <a 
+                      href="https://www.hilton.com/en/attend-my-event/thekshatriyasnationalevent-dallas2025/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-8 py-4 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors flex items-center justify-center gap-2 w-full md:w-auto"
+                    >
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      Book Your Stay
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Why Attend Section */}
       <section className="py-16 bg-gray-50">
@@ -600,50 +674,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Hotel Information */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-[#732424] mb-6">Official Event Hotel</h3>
-              
-              <div className="mb-8">
-                <div className="flex flex-col md:flex-row gap-8 items-start">
-                  <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">Frisco Embassy Suites Hotel</h4>
-                    <p className="text-gray-600 mb-4">
-                      Enjoy a comfortable stay at our official event hotel, featuring spacious suites and complimentary breakfast.
-                    </p>
-                    <div className="bg-[#732424]/5 rounded-lg p-4 mb-6">
-                      <p className="text-[#732424] font-semibold">Special discount available for event attendees</p>
-                      <p className="text-gray-600 text-sm">Contact hotel for rates and availability</p>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <a 
-                        href="https://www.hilton.com/en/hotels/dfwfses-embassy-suites-dallas-frisco-hotel-convention-center/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center justify-center px-6 py-3 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors"
-                      >
-                        Book Now
-                        <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                      <a 
-                        href="tel:+19723788800" 
-                        className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#732424] text-[#732424] font-semibold rounded-lg hover:bg-[#732424]/5 transition-colors"
-                      >
-                        Call Hotel
-                        <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Nearby Attractions */}
             <div className="bg-white rounded-xl shadow-lg p-8 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
@@ -791,9 +821,9 @@ export default function Home() {
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Us for This Unforgettable Event</h2>
-            <p className="text-xl mb-10 max-w-2xl mx-auto">
-              Celebrate our culture, connect with our community, and create lasting memories at the Kshatriya (KANA) National Event 2025.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Us at the Kshatriya National Event</h2>
+            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+              Be part of this historic gathering. Register now to secure your spot and join us in celebrating our heritage, culture, and community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 

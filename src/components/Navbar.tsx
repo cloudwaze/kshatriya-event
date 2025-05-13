@@ -44,7 +44,7 @@ export default function Navbar() {
       <div className="h-20"></div>
       
       <nav 
-        className={`fixed top-0 left-0 right-0 bg-[#732424] text-white z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 bg-[rgb(87,4,4)] text-white z-50 transition-all duration-300 ${
           scrolled ? 'shadow-md' : ''
         }`}
       >
@@ -54,11 +54,11 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/logo.png`}
-                  alt="Kshatriya Logo"
-                  width={60}
-                  height={60}
-                  className="text-[#FDB347]"
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main_logo.png`}
+                  alt="Kshatriya National Event Logo"
+                  width={120}
+                  height={120}
+                  className="h-16 w-auto"
                   priority
                 />
               </Link>

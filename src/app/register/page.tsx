@@ -24,7 +24,7 @@ export default function RegisterPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl font-bold mb-6">Event Tickets</h1>
             <p className="text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
-              Purchase your tickets for the Kshatriya (KANA) National Event 2025.
+              Purchase your tickets for the Kshatriya National Event 2025.
               We offer various options including the main event, banquet, and matrimony event.
               All payments are processed securely through Zeffy, our trusted payment partner for nonprofit events.
             </p>
