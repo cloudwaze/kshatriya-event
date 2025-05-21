@@ -6,10 +6,10 @@ import { PageLayout } from '../../components/ui/PageLayout';
 
 const zeffyLinks = {
   mainEvent: 'https://zeffy.com/main-event-placeholder',
-  banquet: 'https://zeffy.com/banquet-placeholder',
+  banquet: 'https://www.zeffy.com/en-US/ticketing/banquet-tickets-national-event--2025',
   matrimony: 'https://zeffy.com/matrimony-placeholder',
   booth: 'https://zeffy.com/booth-placeholder',
-  donate: 'https://zeffy.com/donate-placeholder',
+  donate: 'https://www.zeffy.com/en-US/fundraising/donate-to-make-a-difference-15110',
 };
 
 export default function RegisterPage() {

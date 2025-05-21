@@ -404,12 +404,14 @@ export default function Home() {
                       <span className="text-gray-700">VIP networking opportunities</span>
                     </li>
                   </ul>
-                  <Link 
-                    href="/register" 
+                  <a 
+                    href="https://www.zeffy.com/en-US/ticketing/banquet-tickets-national-event--2025"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full py-3 text-center bg-[#FDB347] text-white font-semibold rounded-lg hover:bg-[#FDB347]/90 transition-colors"
                   >
                     Buy
-                  </Link>
+                  </a>
                 </div>
               </div>
               
@@ -489,6 +491,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-1 text-[#8B4513]">Bronze</h3>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-extrabold text-gray-900">$1,000</span>
+                    <span className="ml-2 text-sm text-gray-500">Value: $200</span>
                   </div>
                   <div className="pt-2 pb-4">
                     <ul className="space-y-3">
@@ -496,7 +499,13 @@ export default function Home() {
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">4 Event Tickets</span>
+                        <span className="text-gray-700">1 Banquet Ticket</span>
+                      </li>
+                      <li className="flex">
+                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-700">1 Event Ticket</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -524,9 +533,10 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-b from-[#A0522D]/5 to-[#A0522D]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
                 <div className="px-6 pt-8 pb-6">
-                  <h3 className="text-2xl font-bold mb-1 text-[#A0522D]">Bronze Plus</h3>
+                  <h3 className="text-2xl font-bold mb-1 text-[#A0522D]">Bronze +</h3>
                   <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-extrabold text-gray-900">$1,000</span>
+                    <span className="text-4xl font-extrabold text-gray-900">$1,500</span>
+                    <span className="ml-2 text-sm text-gray-500">Value: $500</span>
                   </div>
                   <div className="pt-2 pb-4">
                     <ul className="space-y-3">
@@ -534,13 +544,13 @@ export default function Home() {
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">1 Banquet Ticket</span>
+                        <span className="text-gray-700">2 Banquet Tickets</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">1 Event Ticket</span>
+                        <span className="text-gray-700">4 Event Tickets</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -571,6 +581,7 @@ export default function Home() {
                   <h3 className="text-2xl font-bold mb-1 text-[#71797E]">Silver</h3>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-extrabold text-gray-900">$2,500</span>
+                    <span className="ml-2 text-sm text-gray-500">Value: $700</span>
                   </div>
                   <div className="pt-2 pb-4">
                     <ul className="space-y-3">
@@ -585,6 +596,12 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-gray-700">4 Event Tickets</span>
+                      </li>
+                      <li className="flex items-start">
+                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-700">1 night hotel</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -837,7 +854,15 @@ export default function Home() {
                 className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg shadow-md hover:bg-white/10 transition-all transform hover:-translate-y-1"
               >
                 View Full Schedule
-          </Link>
+              </Link>
+              <a 
+                href="https://www.zeffy.com/en-US/fundraising/donate-to-make-a-difference-15110"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-[#FDB347] text-white font-bold rounded-lg shadow-md hover:bg-[#FDB347]/90 transition-all transform hover:-translate-y-1"
+              >
+                Donate Now
+              </a>
             </div>
           </div>
         </div>

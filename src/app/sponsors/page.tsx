@@ -7,40 +7,44 @@ import { PageLayout } from '../../components/ui/PageLayout';
 const sponsorshipTiers = [
   {
     id: 'bronze',
-    name: 'Package 1 (Bronze)',
+    name: 'Bronze',
     price: '$1,000',
     color: '#8B4513', // Rich bronze color
     valueIncluded: '$200',
     benefits: [
-      '4 Event Tickets',
+      '1 Banquet Ticket',
+      '1 Event Ticket',
       'Name will be listed in the Souvenir'
     ],
   },
   {
     id: 'bronze-plus',
-    name: 'Package 2 (Bronze +)',
-    price: '$1,000',
+    name: 'Bronze +',
+    price: '$1,500',
     color: '#A0522D', // Sienna bronze
-    valueIncluded: '$250',
+    valueIncluded: '$500',
     benefits: [
-      '1 Banquet + 1 Main Event',
+      '2 Banquet Tickets',
+      '4 Event Tickets',
       'Name will be listed in the Souvenir'
     ],
   },
   {
     id: 'silver',
-    name: 'Package 3 (Silver)',
+    name: 'Silver',
     price: '$2,500',
     color: '#71797E', // Elegant silver
-    valueIncluded: '$500',
+    valueIncluded: '$700',
     benefits: [
-      'Includes 2 Banquet and 4 Event Tickets',
+      '2 Banquet Tickets',
+      '4 Event Tickets',
+      '1 night hotel',
       'Name will be listed in the Souvenir'
     ],
   },
   {
     id: 'gold',
-    name: 'Package 4 (Gold)',
+    name: 'Gold',
     price: '$5,000',
     color: '#D4AF37', // Classic gold
     valueIncluded: '$900',
@@ -52,7 +56,7 @@ const sponsorshipTiers = [
   },
   {
     id: 'platinum',
-    name: 'Package 6 (Platinum)',
+    name: 'Platinum',
     price: '$10,000',
     color: '#8E8E8E', // Sophisticated platinum
     valueIncluded: '$2,000',
@@ -65,7 +69,7 @@ const sponsorshipTiers = [
   },
   {
     id: 'diamond',
-    name: 'Package 7 (Diamond)',
+    name: 'Diamond',
     price: '$15,000+',
     color: '#0B4F6C', // Deep blue diamond
     valueIncluded: '$2,500',
