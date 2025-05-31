@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PageLayout } from '../../components/ui/PageLayout';
 
 const zeffyLinks = {
-  mainEvent: 'https://zeffy.com/main-event-placeholder',
+  mainEvent: 'https://www.zeffy.com/ticketing/cultural-event-tickets-national-event--2025',
   banquet: 'https://www.zeffy.com/en-US/ticketing/banquet-tickets-national-event--2025',
   matrimony: 'https://zeffy.com/matrimony-placeholder',
   booth: 'https://zeffy.com/booth-placeholder',
@@ -59,7 +59,7 @@ export default function RegisterPage() {
         </div>
       </div>
       {/* Event Packages Grid */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Main Event */}
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Main Event</h2>
@@ -75,19 +75,21 @@ export default function RegisterPage() {
             <a href={zeffyLinks.banquet} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
         </div>
         {/* Matrimony */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
+        {/* <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Matrimony</h2>
           <p className="text-2xl font-bold text-secondary mb-2">$250 <span className="text-base font-normal">/family</span></p>
           <p className="text-gray-700 mb-4">Participate in the exclusive matrimonial event for families.</p>
-            <a href={zeffyLinks.matrimony} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
-        </div>
+            <div className="px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium text-center">
+              Registrations will open after summer
+            </div>
+        </div> */}
         {/* Booth */}
-        <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
+        {/* <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Booth</h2>
           <p className="text-2xl font-bold text-secondary mb-2">$250</p>
           <p className="text-gray-700 mb-4">Includes one table and two chairs. Bring your own materials.</p>
             <a href={zeffyLinks.booth} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
-          </div>
+          </div> */}
         </div>
         
         {/* Hotel Section */}

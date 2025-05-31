@@ -5,6 +5,13 @@ import Image from 'next/image';
 import CountdownTimer from '../components/CountdownTimer';
 import { PageLayout } from '../components/ui/PageLayout';
 
+const zeffyLinks = {
+  mainEvent: 'https://www.zeffy.com/ticketing/cultural-event-tickets-national-event--2025',
+  banquet: 'https://www.zeffy.com/ticketing/banquet-tickets-national-event--2025',
+  sponsorshipPackages: 'https://www.zeffy.com/ticketing/sponsorship-packages-6',
+  donate: 'https://www.zeffy.com/fundraising/donate-to-make-a-difference-15110',
+};
+
 export default function Home() {
   // Event date - December 20, 2025
   const eventDate = new Date('2025-12-20T00:00:00');
@@ -19,18 +26,6 @@ export default function Home() {
         
         {/* Hero Content */}
         <div className="container relative mx-auto px-4 py-20 flex flex-col items-center justify-center text-center z-10">
-          {/* Logo */}
-          <div className="mb-8 max-w-[800px] w-full">
-            <Image
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main_logo.png`}
-              alt="Kshatriya National Event Logo"
-              width={800}
-              height={800}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-          
           {/* Main Heading */}
           <h1 className="text-4xl md:text-7xl font-bold mb-4 text-white drop-shadow-lg">
             The Kshatriyas National Event
@@ -144,6 +139,67 @@ export default function Home() {
                       </svg>
                       Book Your Stay
                     </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Donation Section */}
+      <section className="py-16 bg-gradient-to-r from-[#732424]/5 to-[#732424]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+              <div className="p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="md:w-1/4 flex justify-center">
+                    <div className="w-28 h-28 bg-gradient-to-br from-[#732424]/10 to-[#732424]/20 rounded-full flex items-center justify-center">
+                      <svg className="w-14 h-14 text-[#732424]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-3/4 text-center md:text-left">
+                    <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Support Our Community</span>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
+                    <p className="text-lg text-gray-700 mb-6">
+                      Support our cultural event with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
+                    </p>
+                    
+                    <div className="bg-green-50 rounded-lg p-4 mb-6">
+                      <div className="flex items-center mb-2">
+                        <svg className="h-5 w-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-green-800 font-semibold">Tax Deductible</span>
+                      </div>
+                      <p className="text-green-700 text-sm">
+                        All donations are tax-deductible under Section 501(c)(3) of the Internal Revenue Code. You will receive a tax receipt.
+                      </p>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                      <a 
+                        href={zeffyLinks.donate} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-block px-8 py-3 bg-[#732424] text-white rounded-lg font-semibold hover:bg-[#9E3030] transition-colors flex items-center justify-center gap-2"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span>Donate Now</span>
+                      </a>
+                      <Link 
+                        href="/contact-us" 
+                        className="inline-block px-8 py-3 border-2 border-[#732424] text-[#732424] rounded-lg font-semibold hover:bg-[#732424]/5 transition-colors"
+                      >
+                        Contact Us
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -326,7 +382,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Main Event Package */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div className="bg-primary/10 p-6 text-center">
@@ -361,12 +417,14 @@ export default function Home() {
                       <span className="text-green-700 font-medium">Children under 10: Free</span>
                     </li>
                   </ul>
-                  <Link 
-                    href="/register" 
+                  <a 
+                    href={zeffyLinks.mainEvent}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full py-3 text-center bg-primary text-white font-semibold rounded-lg hover:bg-secondary transition-colors"
                   >
                     Buy
-                  </Link>
+                  </a>
                 </div>
               </div>
               
@@ -405,7 +463,7 @@ export default function Home() {
                     </li>
                   </ul>
                   <a 
-                    href="https://www.zeffy.com/en-US/ticketing/banquet-tickets-national-event--2025"
+                    href={zeffyLinks.banquet}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-full py-3 text-center bg-[#FDB347] text-white font-semibold rounded-lg hover:bg-[#FDB347]/90 transition-colors"
@@ -414,54 +472,11 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              
-              {/* Matrimony Package */}
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="bg-primary/10 p-6 text-center">
-                  <h3 className="text-xl font-bold text-primary">Matrimony</h3>
-                  <div className="text-3xl font-bold text-secondary mt-2">$250</div>
-                  <div className="text-gray-500 text-sm">per family</div>
-                </div>
-                <div className="p-6">
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-start">
-                      <svg className="h-5 w-5 text-[#FDB347] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">Exclusive matrimonial event access</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="h-5 w-5 text-[#FDB347] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">Bio-data inclusion in directory</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="h-5 w-5 text-[#FDB347] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">Facilitated introductions</span>
-                    </li>
-                    <li className="flex items-start">
-                      <svg className="h-5 w-5 text-[#FDB347] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">Private meeting spaces</span>
-                    </li>
-                  </ul>
-                  <Link 
-                    href="/register" 
-                    className="block w-full py-3 text-center bg-primary text-white font-semibold rounded-lg hover:bg-secondary transition-colors"
-                  >
-                    Buy
-                  </Link>
-                </div>
-              </div>
             </div>
             
             <div className="text-center mt-12">
               <Link 
-                href="/sponsors" 
+                href="/register" 
                 className="inline-block px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/5 transition-colors"
               >
                 View All Ticket Options
@@ -482,7 +497,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Bronze Package */}
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-b from-[#8B4513]/5 to-[#8B4513]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
@@ -518,57 +533,14 @@ export default function Home() {
                 </div>
                 
                 <div className="px-6 pb-8 mt-auto">
-                  <Link 
-                    href="/sponsors" 
+                  <a 
+                    href={zeffyLinks.sponsorshipPackages}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full text-center py-3 px-4 rounded-lg text-white font-medium transition-colors bg-[#8B4513]"
                   >
                     Buy
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Bronze Plus Package */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#A0522D]/5 to-[#A0522D]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
-              <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
-                <div className="px-6 pt-8 pb-6">
-                  <h3 className="text-2xl font-bold mb-1 text-[#A0522D]">Bronze +</h3>
-                  <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-extrabold text-gray-900">$1,500</span>
-                    <span className="ml-2 text-sm text-gray-500">Value: $500</span>
-                  </div>
-                  <div className="pt-2 pb-4">
-                    <ul className="space-y-3">
-                      <li className="flex">
-                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700">2 Banquet Tickets</span>
-                      </li>
-                      <li className="flex">
-                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700">4 Event Tickets</span>
-                      </li>
-                      <li className="flex">
-                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700">Name listed in Souvenir</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="px-6 pb-8 mt-auto">
-                  <Link 
-                    href="/sponsors" 
-                    className="block w-full text-center py-3 px-4 rounded-lg text-white font-medium transition-colors bg-[#A0522D]"
-                  >
-                    Buy
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -601,7 +573,7 @@ export default function Home() {
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">1 night hotel</span>
+                        <span className="text-gray-700">Hotel for 1 night</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -614,12 +586,14 @@ export default function Home() {
                 </div>
                 
                 <div className="px-6 pb-8 mt-auto">
-                  <Link 
-                    href="/sponsors" 
+                  <a 
+                    href={zeffyLinks.sponsorshipPackages}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block w-full text-center py-3 px-4 rounded-lg text-white font-medium transition-colors bg-[#71797E]"
                   >
                     Buy
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -856,7 +830,7 @@ export default function Home() {
                 View Full Schedule
               </Link>
               <a 
-                href="https://www.zeffy.com/en-US/fundraising/donate-to-make-a-difference-15110"
+                href={zeffyLinks.donate}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-[#FDB347] text-white font-bold rounded-lg shadow-md hover:bg-[#FDB347]/90 transition-all transform hover:-translate-y-1"

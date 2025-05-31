@@ -18,18 +18,6 @@ const sponsorshipTiers = [
     ],
   },
   {
-    id: 'bronze-plus',
-    name: 'Bronze +',
-    price: '$1,500',
-    color: '#A0522D', // Sienna bronze
-    valueIncluded: '$500',
-    benefits: [
-      '2 Banquet Tickets',
-      '4 Event Tickets',
-      'Name will be listed in the Souvenir'
-    ],
-  },
-  {
     id: 'silver',
     name: 'Silver',
     price: '$2,500',
@@ -38,7 +26,7 @@ const sponsorshipTiers = [
     benefits: [
       '2 Banquet Tickets',
       '4 Event Tickets',
-      '1 night hotel',
+      'Hotel for 1 night',
       'Name will be listed in the Souvenir'
     ],
   },
@@ -49,9 +37,11 @@ const sponsorshipTiers = [
     color: '#D4AF37', // Classic gold
     valueIncluded: '$900',
     benefits: [
-      '1 hotel room for 2 nights',
-      '2 Banquet Tickets and 4 Event Tickets',
-      'Quarter page ad or picture in Souvenir'
+      'Hotel for 2 nights',
+      '2 Banquet Tickets',
+      '4 Event Tickets',
+      'Quarter page ad',
+      'Picture in Souvenir'
     ],
   },
   {
@@ -61,29 +51,20 @@ const sponsorshipTiers = [
     color: '#8E8E8E', // Sophisticated platinum
     valueIncluded: '$2,000',
     benefits: [
-      'Includes 2 hotel rooms for 2 nights',
-      '4 Banquet Tickets and 4 Event Tickets',
+      'Hotel for 2 nights (2 rooms)',
+      '4 Banquet Tickets',
+      '4 Event Tickets',
       'Half page in Souvenir',
-      'Call on stage and facilitate with shawl'
-    ],
-  },
-  {
-    id: 'diamond',
-    name: 'Diamond',
-    price: '$15,000+',
-    color: '#0B4F6C', // Deep blue diamond
-    valueIncluded: '$2,500',
-    benefits: [
-      'Includes 3 hotel rooms for 2 nights',
-      '6 Banquet Tickets and 6 Event Tickets',
-      'Full Page in Souvenir',
       'Call on stage and facilitate with shawl'
     ],
   },
 ];
 
 const zeffyLinks = {
-  donate: 'https://zeffy.com/donate-placeholder',
+  sponsorshipPackages: 'https://www.zeffy.com/ticketing/sponsorship-packages-6',
+  banquetTickets: 'https://www.zeffy.com/ticketing/banquet-tickets-national-event--2025',
+  eventTickets: 'https://www.zeffy.com/ticketing/cultural-event-tickets-national-event--2025',
+  donate: 'https://www.zeffy.com/fundraising/donate-to-make-a-difference-15110',
 };
 
 export default function SponsorsPage() {
@@ -154,43 +135,48 @@ export default function SponsorsPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sponsorshipTiers.map((tier, index) => (
-              <div key={index} className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#732424]/5 to-[#732424]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
-                <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
-                  <div className="px-6 pt-8 pb-6">
-                    <h3 className="text-2xl font-bold mb-1" style={{ color: tier.color }}>{tier.name}</h3>
-                    <div className="flex items-baseline mb-6">
-                      <span className="text-4xl font-extrabold text-gray-900">{tier.price}</span>
-                      <span className="ml-2 text-sm text-gray-500">Included Value: {tier.valueIncluded}</span>
+          <div>
+            {/* Sponsorship packages - 2x2 grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {sponsorshipTiers.map((tier, index) => (
+                <div key={index} className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#732424]/5 to-[#732424]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
+                  <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
+                    <div className="px-6 pt-8 pb-6">
+                      <h3 className="text-2xl font-bold mb-1" style={{ color: tier.color }}>{tier.name}</h3>
+                      <div className="flex items-baseline mb-6">
+                        <span className="text-4xl font-extrabold text-gray-900">{tier.price}</span>
+                        <span className="ml-2 text-sm text-gray-500">Included Value: {tier.valueIncluded}</span>
+                      </div>
+                      <div className="pt-2 pb-4">
+                        <ul className="space-y-3">
+                          {tier.benefits.map((benefit, idx) => (
+                            <li key={idx} className="flex">
+                              <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-gray-700">{benefit}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="pt-2 pb-4">
-                      <ul className="space-y-3">
-                        {tier.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex">
-                            <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className="text-gray-700">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    
+                    <div className="px-6 pb-8 mt-auto">
+                      <a 
+                        href={zeffyLinks.sponsorshipPackages}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center py-3 px-4 rounded-lg text-white font-medium transition-colors"
+                        style={{ backgroundColor: tier.color }}
+                      >
+                        Buy
+                      </a>
                     </div>
-                  </div>
-                  
-                  <div className="px-6 pb-8 mt-auto">
-                    <Link 
-                      href="/contact-us" 
-                      className="block w-full text-center py-3 px-4 rounded-lg text-white font-medium transition-colors"
-                      style={{ backgroundColor: tier.color }}
-                    >
-                      Buy
-                    </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           
           {/* Custom Donation Section */}

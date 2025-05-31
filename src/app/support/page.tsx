@@ -40,14 +40,6 @@ const faqs: FAQItem[] = [
   {
     question: "Will there be vegetarian food options available?",
     answer: "Yes, we will have vegetarian options available at all meal functions. Please indicate your dietary preferences during registration."
-  },
-  {
-    question: "Can I get a refund if I'm unable to attend?",
-    answer: "Refunds are available until 60 days before the event with a 15% processing fee. After that, registrations are non-refundable but transferable to another attendee."
-  },
-  {
-    question: "How can I contact the event organizers?",
-    answer: "For general inquiries, please email events@thekshatriyas.org. For urgent matters during the event, contact our event coordinator at (987) 654-3210."
   }
 ];
 
