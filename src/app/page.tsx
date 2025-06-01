@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import CountdownTimer from '../components/CountdownTimer';
 import { PageLayout } from '../components/ui/PageLayout';
 
@@ -15,7 +16,39 @@ const zeffyLinks = {
 export default function Home() {
   // Event date - December 20, 2025
   const eventDate = new Date('2025-12-20T00:00:00');
-  
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Video is in view, play it
+            video.play().catch((error) => {
+              console.log('Autoplay failed:', error);
+            });
+          } else {
+            // Video is out of view, pause it
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Play when 30% of video is visible
+      }
+    );
+
+    observer.observe(video);
+
+    // Cleanup
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <PageLayout maxWidth="full">
       {/* Hero Section - Enhanced Design */}
@@ -32,8 +65,8 @@ export default function Home() {
           </h1>
           
           {/* Tagline */}
-          <p className="text-xl md:text-2xl font-semibold text-[#FDB347] mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Connect Generations, Celebrate Heritage, Contribute Growth
+          <p className="text-xl md:text-2xl font-semibold text-[#FDB347] mb-10 max-w-2xl mx-auto drop-shadow-md whitespace-nowrap">
+            Connect Generations<span className="mx-2">,</span> Celebrate Heritage<span className="mx-2">,</span> Contribute Growth
           </p>
           
           {/* Event Date & Location */}
@@ -83,7 +116,7 @@ export default function Home() {
               href="/sponsors" 
               className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
             >
-              View Premium Packages
+              Sponsorship Packages
             </Link>
           </div>
         </div>
@@ -142,6 +175,52 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-16 bg-gradient-to-br from-[#732424]/5 via-white to-[#732424]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Experience Our Event</span>
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 whitespace-nowrap">Here's a glimpse to know about The Kshatriyas National Event</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Get a glimpse of what makes our community special and discover the rich traditions we celebrate together
+              </p>
+              <div className="w-24 h-1 bg-[#FDB347] mx-auto mt-8"></div>
+            </div>
+            
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden p-4">
+                <div className="relative rounded-xl overflow-hidden bg-gray-900">
+                  <video 
+                    className="w-full h-auto max-h-[500px] object-cover"
+                    controls
+                    muted
+                    loop
+                    playsInline
+                    poster={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main-event.jpg`}
+                    preload="metadata"
+                    ref={videoRef}
+                  >
+                    <source 
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/home_video.mp4`} 
+                      type="video/mp4" 
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  
+                  {/* Overlay for styling */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-[#FDB347] rounded-full opacity-60"></div>
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-[#732424] rounded-full opacity-30"></div>
             </div>
           </div>
         </div>
@@ -503,10 +582,10 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-b from-[#8B4513]/5 to-[#8B4513]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
                 <div className="px-6 pt-8 pb-6">
-                  <h3 className="text-2xl font-bold mb-1 text-[#8B4513]">Bronze</h3>
+                  <h3 className="text-2xl font-bold mb-1 text-[#8B4513]">Bronze Sponsor</h3>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-extrabold text-gray-900">$1,000</span>
-                    <span className="ml-2 text-sm text-gray-500">Value: $200</span>
+                    <span className="ml-2 text-sm text-gray-500">Value: $250</span>
                   </div>
                   <div className="pt-2 pb-4">
                     <ul className="space-y-3">
@@ -514,13 +593,13 @@ export default function Home() {
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">1 Banquet Ticket</span>
+                        <span className="text-gray-700">1 Banquet Ticket ($150)</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">1 Event Ticket</span>
+                        <span className="text-gray-700">2 Event Tickets ($100)</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -550,7 +629,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-b from-[#71797E]/5 to-[#71797E]/20 rounded-2xl transform group-hover:scale-105 transition-transform duration-300"></div>
               <div className="relative flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden h-full border border-gray-100 transform group-hover:scale-105 transition-transform duration-300">
                 <div className="px-6 pt-8 pb-6">
-                  <h3 className="text-2xl font-bold mb-1 text-[#71797E]">Silver</h3>
+                  <h3 className="text-2xl font-bold mb-1 text-[#71797E]">Silver Sponsor</h3>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-extrabold text-gray-900">$2,500</span>
                     <span className="ml-2 text-sm text-gray-500">Value: $700</span>
@@ -561,25 +640,25 @@ export default function Home() {
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">2 Banquet Tickets</span>
+                        <span className="text-gray-700">2 Banquet Tickets ($300)</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">4 Event Tickets</span>
-                      </li>
-                      <li className="flex items-start">
-                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span className="text-gray-700">Hotel for 1 night</span>
+                        <span className="text-gray-700">4 Event Tickets ($200)</span>
                       </li>
                       <li className="flex">
                         <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-700">Name listed in Souvenir</span>
+                        <span className="text-gray-700">1 Hotel Room for 1 Night ($200)</span>
+                      </li>
+                      <li className="flex">
+                        <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-gray-700">Quarter Page Ad in Souvenir</span>
                       </li>
                     </ul>
                   </div>
@@ -604,7 +683,7 @@ export default function Home() {
               href="/sponsors" 
               className="inline-block px-6 py-4 bg-[#732424] text-white font-semibold rounded-lg hover:bg-[#5a1c1c] transition-colors"
             >
-              View Package Options
+              View Sponsorship Packages
             </Link>
           </div>
         </div>

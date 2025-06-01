@@ -18,16 +18,8 @@ const faqs: FAQItem[] = [
     answer: "You can register for the event by visiting our Registration page. Early bird registration offers discounted rates and is available until June 2025."
   },
   {
-    question: "What is included in the registration fee?",
-    answer: "The registration fee includes access to all scheduled events including the matrimonial event, youth empowerment sessions, entrepreneurship networking, and the grand banquet on December 20th, as well as the National Event on December 21st. Meals and refreshments during the events are also included."
-  },
-  {
     question: "Is there a dress code for the events?",
     answer: "For the Banquet on December 20th, formal attire is recommended. For other events, business casual or traditional attire is appropriate."
-  },
-  {
-    question: "Are accommodations included in the registration?",
-    answer: "No, accommodations are not included in the registration fee. However, we have secured special rates at the Embassy Suites by Hilton Dallas-Frisco Hotel for attendees. Details are available on our registration page."
   },
   {
     question: "Is there parking available at the venue?",
@@ -58,7 +50,7 @@ export default function SupportPage() {
         <h1 className="text-4xl font-bold text-center mb-8 text-[#732424]">Support & FAQ</h1>
         
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
           <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
             <div className="w-16 h-16 bg-[#732424]/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <svg className="w-8 h-8 text-[#732424]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,19 +61,6 @@ export default function SupportPage() {
             <p className="text-gray-600 mb-4">For general inquiries</p>
             <a href="mailto:events@thekshatriyas.org" className="text-[#732424] font-medium hover:underline break-all">
               events@thekshatriyas.org
-            </a>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
-            <div className="w-16 h-16 bg-[#732424]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-[#732424]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-            <p className="text-gray-600 mb-4">Event Office</p>
-            <a href="tel:+11234567890" className="text-[#732424] font-medium hover:underline">
-              (123) 456-7890
             </a>
           </div>
           

@@ -7,55 +7,57 @@ import { PageLayout } from '../../components/ui/PageLayout';
 const sponsorshipTiers = [
   {
     id: 'bronze',
-    name: 'Bronze',
+    name: 'Bronze Sponsor',
     price: '$1,000',
     color: '#8B4513', // Rich bronze color
-    valueIncluded: '$200',
+    valueIncluded: '$250',
     benefits: [
-      '1 Banquet Ticket',
-      '1 Event Ticket',
+      '1 Banquet Ticket ($150)',
+      '2 Event Tickets ($100)',
       'Name will be listed in the Souvenir'
     ],
   },
   {
     id: 'silver',
-    name: 'Silver',
+    name: 'Silver Sponsor',
     price: '$2,500',
     color: '#71797E', // Elegant silver
     valueIncluded: '$700',
     benefits: [
-      '2 Banquet Tickets',
-      '4 Event Tickets',
-      'Hotel for 1 night',
-      'Name will be listed in the Souvenir'
+      '2 Banquet Tickets ($300)',
+      '4 Event Tickets ($200)',
+      '1 Hotel Room for 1 Night ($200)',
+      'Quarter Page Ad or Photo in the Souvenir'
     ],
   },
   {
     id: 'gold',
-    name: 'Gold',
+    name: 'Gold Sponsor',
     price: '$5,000',
-    color: '#D4AF37', // Classic gold
-    valueIncluded: '$900',
+    color: '#B8860B', // Classic gold
+    valueIncluded: '$1,000',
     benefits: [
-      'Hotel for 2 nights',
-      '2 Banquet Tickets',
-      '4 Event Tickets',
-      'Quarter page ad',
-      'Picture in Souvenir'
+      '2 Banquet Tickets ($300)',
+      '6 Event Tickets ($300)',
+      '1 Hotel Room for 2 Nights ($400)',
+      'Half-Page Ad or Photo in the Souvenir',
+      'Business featured on venue TVs/monitors',
+      '10-second ad spots played repeatedly'
     ],
   },
   {
     id: 'platinum',
-    name: 'Platinum',
+    name: 'Platinum Sponsor',
     price: '$10,000',
-    color: '#8E8E8E', // Sophisticated platinum
+    color: '#6A5ACD', // Sophisticated platinum
     valueIncluded: '$2,000',
     benefits: [
-      'Hotel for 2 nights (2 rooms)',
-      '4 Banquet Tickets',
-      '4 Event Tickets',
-      'Half page in Souvenir',
-      'Call on stage and facilitate with shawl'
+      '6 Banquet Tickets ($900)',
+      '6 Event Tickets ($300)',
+      '2 Hotel Rooms for 2 Nights ($800)',
+      'Full-Page Ad or Photo in the Souvenir',
+      'Business featured on venue TVs/monitors',
+      '20-second ad spots played repeatedly'
     ],
   },
 ];

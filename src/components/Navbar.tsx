@@ -40,9 +40,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Placeholder div to prevent content from jumping when navbar becomes fixed */}
-      <div className="h-20"></div>
-      
       <nav 
         className={`fixed top-0 left-0 right-0 bg-[rgb(87,4,4)] text-white z-50 transition-all duration-300 ${
           scrolled ? 'shadow-md' : ''
@@ -52,13 +49,13 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center h-full">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main_logo.png`}
                   alt="Kshatriya National Event Logo"
-                  width={120}
-                  height={120}
-                  className="h-16 w-auto"
+                  width={180}
+                  height={150}
+                  className="h-14 w-auto"
                   priority
                 />
               </Link>
@@ -83,7 +80,7 @@ export default function Navbar() {
                   href="/sponsors" 
                   className={`font-semibold text-lg transition-colors ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Packages
+                  Sponsorship Packages
                 </Link>
                 <Link 
                   href="/register" 
@@ -157,7 +154,7 @@ export default function Navbar() {
                   onClick={closeMenu}
                   className={`block px-4 py-2 font-semibold ${isActive('/sponsors') ? 'text-[#FDB347]' : 'text-white hover:text-[#FDB347]/80'}`}
                 >
-                  Packages
+                  Sponsorship Packages
                 </Link>
                 <Link 
                   href="/register" 
