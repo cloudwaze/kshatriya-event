@@ -198,34 +198,84 @@ export default function SponsorsPage() {
                     
                     <div className="md:w-3/4 text-center md:text-left">
                       <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Custom Support</span>
-                      <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
-                      <p className="text-lg text-gray-700 mb-8">
-                        Support our cultural event with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives. All donations are tax-deductible under our 501(c)(3) status.
+                      <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Custom Donation</h2>
+                      <p className="text-lg text-gray-700 mb-6">
+                        Prefer to make a direct donation instead of selecting a sponsorship package? 
+                        Support our event with a donation of any amount. Your contribution helps 
+                        create a memorable experience for our community.
                       </p>
-                      
-                      <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mb-2">
-                        <a 
-                          href={zeffyLinks.donate} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-block px-8 py-3 bg-[#732424] text-white rounded-lg font-semibold hover:bg-[#9E3030] transition-colors flex items-center justify-center gap-2"
-                        >
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-                          <span>Donate Now</span>
-                        </a>
-                        <Link 
-                          href="/contact-us" 
-                          className="inline-block px-8 py-3 border-2 border-[#732424] text-[#732424] rounded-lg font-semibold hover:bg-[#732424]/5 transition-colors"
-                        >
-                          Contact Us
-                        </Link>
+                      <a 
+                        href={zeffyLinks.donate} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-block px-8 py-3 bg-[#732424] text-white rounded-lg font-semibold hover:bg-[#732424]/90 transition-colors flex items-center justify-center gap-2 w-full md:w-auto"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span>Donate Now</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Make a Donation Section - Same as Home Page */}
+      <section className="py-16 bg-gradient-to-r from-[#732424]/5 to-[#732424]/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+              <div className="p-8">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="md:w-1/4 flex justify-center">
+                    <div className="w-28 h-28 bg-gradient-to-br from-[#732424]/10 to-[#732424]/20 rounded-full flex items-center justify-center">
+                      <svg className="w-14 h-14 text-[#732424]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-3/4 text-center md:text-left">
+                    <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Support Our Community</span>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
+                    <p className="text-lg text-gray-700 mb-6">
+                      Support our Community with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
+                    </p>
+                    
+                    <div className="bg-green-50 rounded-lg p-4 mb-6">
+                      <div className="flex items-center mb-2">
+                        <svg className="h-5 w-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-green-800 font-semibold">Tax Deductible</span>
                       </div>
-                      
-                      <p className="text-sm text-gray-500 mt-4">
-                        For questions about donations or to discuss custom sponsorship opportunities, please contact our sponsorship team.
+                      <p className="text-green-700 text-sm">
+                        All donations are tax-deductible under Section 501(c)(3) of the Internal Revenue Code. You will receive a tax receipt.
                       </p>
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                      <a 
+                        href={zeffyLinks.donate} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-block px-8 py-3 bg-[#732424] text-white rounded-lg font-semibold hover:bg-[#9E3030] transition-colors flex items-center justify-center gap-2"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        <span>Donate Now</span>
+                      </a>
+                      <Link 
+                        href="/contact-us" 
+                        className="inline-block px-8 py-3 border-2 border-[#732424] text-[#732424] rounded-lg font-semibold hover:bg-[#732424]/5 transition-colors"
+                      >
+                        Contact Us
+                      </Link>
                     </div>
                   </div>
                 </div>

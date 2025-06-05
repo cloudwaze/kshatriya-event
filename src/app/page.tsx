@@ -161,6 +161,31 @@ export default function Home() {
                     <p className="text-gray-600 mb-6">
                       Special event rates available for attendees.
                     </p>
+                    
+                    {/* Sponsorship Call-out Box */}
+                    <div className="bg-gradient-to-r from-[#732424]/10 to-[#FDB347]/10 border-l-4 border-[#732424] rounded-lg p-4 mb-6">
+                      <div className="flex items-start">
+                        <div className="flex-shrink-0 mr-3">
+                          <svg className="w-6 h-6 text-[#732424]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-[#732424] font-semibold text-lg mb-1">Sponsorship Packages Available!</p>
+                          <p className="text-gray-700">
+                            Support our Community with a sponsorship donation to our{' '}
+                            <Link 
+                              href="/sponsors" 
+                              className="text-[#732424] hover:text-[#5a1c1c] underline font-bold transition-colors"
+                            >
+                              Sponsorship Packages
+                            </Link>
+                            {' '}and earn <span className="font-bold text-[#732424]">free Hotel Stays</span> based on the level of Sponsorship.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                     <a 
                       href="https://www.hilton.com/en/attend-my-event/thekshatriyasnationalevent-dallas2025/"
                       target="_blank"
@@ -245,7 +270,7 @@ export default function Home() {
                     <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Support Our Community</span>
                     <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
                     <p className="text-lg text-gray-700 mb-6">
-                      Support our cultural event with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
+                      Support our Community with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
                     </p>
                     
                     <div className="bg-green-50 rounded-lg p-4 mb-6">
@@ -360,7 +385,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Event Highlights</h2>
               <div className="w-24 h-1 bg-[#FDB347] mx-auto mb-8"></div>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Our 2025 event features a variety of special activities and opportunities designed to engage, entertain, and inspire attendees of all ages.
+                Support our Community with a ticket purchase for you and your family to enjoy everything our national event has to offer.
               </p>
             </div>
             
@@ -409,7 +434,7 @@ export default function Home() {
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/main-event.jpg`}
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/cultutral_event.jpg`}
                     alt="Cultural Activities"
                     width={600}
                     height={400}
@@ -457,7 +482,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Featured Tickets</h2>
               <div className="w-24 h-1 bg-[#FDB347] mx-auto mb-8"></div>
               <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Select the perfect tickets for you and your family to enjoy everything our national event has to offer.
+                Support our Community with a ticket purchase for you and your family to enjoy everything our national event has to offer.
               </p>
             </div>
             
@@ -572,7 +597,7 @@ export default function Home() {
             <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Premium Packages</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Support Our Cultural Celebration</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Join our community partners and gain recognition while supporting our cultural heritage
+              Support our Community with a sponsorship partnership and gain recognition while supporting our cultural heritage
             </p>
           </div>
           

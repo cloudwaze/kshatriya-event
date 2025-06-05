@@ -26,7 +26,7 @@ const schedule = [
       {
         time: "7:00 AM - 8:00 AM",
         title: "Yoga Session",
-        location: "TBD",
+        location: "",
         description: "Start your day with an invigorating yoga session to energize your body and mind.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/yoga.jpg"
@@ -34,7 +34,7 @@ const schedule = [
       {
         time: "9:00 AM - 3:00 PM",
         title: "Matrimonial Event",
-        location: "TBD",
+        location: "",
         description: "Registration starts at 9:00 AM. A thoughtfully organized event to build meaningful connections within our community.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/matrimony.jpg"
@@ -42,7 +42,7 @@ const schedule = [
       {
         time: "3:00 PM - 5:00 PM",
         title: "Entrepreneurship",
-        location: "TBD",
+        location: "",
         description: "Connect with successful entrepreneurs and gain valuable insights for your business journey.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/entrepreneurship.jpg"
@@ -50,7 +50,7 @@ const schedule = [
       {
         time: "6:00 PM - 10:00 PM",
         title: "Banquet",
-        location: "TBD",
+        location: "",
         description: "An elegant dinner with cultural performances and community celebration.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/banquet.jpg"
@@ -58,7 +58,7 @@ const schedule = [
       {
         time: "Throughout the Day",
         title: "Cultural Activities",
-        location: "TBD",
+        location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/cultutral_event.jpg"
@@ -66,7 +66,7 @@ const schedule = [
       {
         time: "Throughout the Day",
         title: "Focused Events",
-        location: "TBD",
+        location: "",
         description: "Additional focused events and activities. Further details will be shared later.",
         isKeyEvent: false,
         image: "/kshatriya-event/images/focusedevents.jpg"
@@ -91,17 +91,9 @@ const schedule = [
     ],
     events: [
       {
-        time: "TBD",
-        title: "Main Event Schedule",
-        location: "TBD",
-        description: "The detailed schedule for the main event will be finalized and shared soon.",
-        isKeyEvent: true,
-        image: "/kshatriya-event/images/main_event.webp"
-      },
-      {
         time: "Throughout the Day",
-        title: "Cultural Activities",
-        location: "TBD",
+        title: "Main Event",
+        location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/cultutral_event.jpg"
@@ -329,12 +321,6 @@ export default function Schedule() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span className="font-mono">{schedule[1].events[0].time}</span>
-                        
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>{schedule[1].events[0].location}</span>
                       </div>
                       
                       <AnimatePresence>
