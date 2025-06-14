@@ -65,7 +65,7 @@ export default function Home() {
           </h1>
           
           {/* Tagline */}
-          <p className="text-xl md:text-2xl font-semibold text-[#FDB347] mb-10 max-w-2xl mx-auto drop-shadow-md whitespace-nowrap">
+          <p className="text-xl md:text-2xl font-semibold text-[#FDB347] mb-10 max-w-2xl mx-auto drop-shadow-md text-center">
             Connect Generations<span className="mx-2">,</span> Celebrate Heritage<span className="mx-2">,</span> Contribute Growth
           </p>
           
@@ -211,7 +211,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Experience Our Event</span>
-              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 whitespace-nowrap">Here's a glimpse to know about The Kshatriyas National Event</h2>
+              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4 text-center">Here's a glimpse to know about The Kshatriyas National Event</h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Get a glimpse of what makes our community special and discover the rich traditions we celebrate together
               </p>
