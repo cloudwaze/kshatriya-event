@@ -97,6 +97,14 @@ const schedule = [
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
         image: "/kshatriya-event/images/cultutral_event.jpg"
+      },
+      {
+        time: "Throughout the Day",
+        title: "Focused Events",
+        location: "",
+        description: "Additional focused events and activities. Further details will be shared later.",
+        isKeyEvent: false,
+        image: "/kshatriya-event/images/focusedevents.jpg"
       }
     ],
   }
@@ -296,9 +304,9 @@ export default function Schedule() {
                   </div>
                 ))
               ) : (
-                // Day 2 - Main Event and Cultural Activities
+                // Day 2 - Main Event (original format) + other events in card format
                 <>
-                  {/* Main Event - Original Display */}
+                  {/* Main Event - Original Simple Display */}
                   <div className="mb-8 relative">
                     <div 
                       className="md:w-8/12 mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
@@ -347,60 +355,73 @@ export default function Schedule() {
                     </div>
                   </div>
 
-                  {/* Cultural Activities */}
-                  <div className="mb-8 relative">
-                    {/* Timeline dot */}
-                    <div 
-                      className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-md" 
-                      style={{ backgroundColor: schedule[1].accentColor }}
-                    ></div>
-                    
-                    {/* Event card */}
-                    <div 
-                      className="md:w-5/12 md:ml-auto md:pl-12 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                      style={{ borderLeft: `4px solid ${schedule[1].accentColor}` }}
-                    >
-                      <div 
-                        className="p-6 cursor-pointer"
-                        onClick={() => setExpandedEvent(expandedEvent === 1 ? null : 1)}
-                      >
-                        <div className="relative h-48 mb-4 rounded-lg overflow-hidden group">
+                  {/* Other Events (Cultural Activities, Focused Events) - Card Format */}
+                  {schedule[1].events.slice(1).map((event, eventIndex) => {
+                    const actualIndex = eventIndex + 1; // Adjust for sliced array
+                    return (
+                      <div key={actualIndex} className="mb-8 relative">
+                        {/* Timeline dot */}
+                        <div 
+                          className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-md" 
+                          style={{ backgroundColor: event.isKeyEvent ? schedule[1].accentColor : schedule[1].themeColor }}
+                        ></div>
+                        
+                        {/* Event card */}
+                        <div 
+                          className={`
+                            md:w-5/12 
+                            ${actualIndex % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'} 
+                            bg-white rounded-xl shadow-lg hover:shadow-xl
+                            transition-all duration-300
+                            ${expandedEvent === actualIndex ? 'transform scale-[1.02] md:scale-[1.03]' : ''}
+                          `}
+                          style={{ borderLeft: `4px solid ${event.isKeyEvent ? schedule[1].accentColor : schedule[1].themeColor}` }}
+                        >
                           <div 
-                            className="absolute inset-0 bg-cover bg-center transform transition-transform duration-300 group-hover:scale-105"
-                            style={{ 
-                              backgroundImage: `url(${schedule[1].events[1].image})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center top'
-                            }}
+                            className="p-6 cursor-pointer"
+                            onClick={() => setExpandedEvent(expandedEvent === actualIndex ? null : actualIndex)}
                           >
-                            {/* Gradient overlay for better text readability */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-                            <h3 className="text-2xl font-bold text-white mb-1">{schedule[1].events[1].title}</h3>
-                            <div className="flex items-center text-white/90 text-sm">
-                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span>{schedule[1].events[1].time}</span>
+                            <div className="relative h-48 mb-4 rounded-lg overflow-hidden group">
+                              <div 
+                                className="absolute inset-0 bg-cover bg-center transform transition-transform duration-300 group-hover:scale-105"
+                                style={{ 
+                                  backgroundImage: `url(${event.image})`,
+                                  backgroundSize: 'cover',
+                                  backgroundPosition: 'center top'
+                                }}
+                              >
+                                {/* Gradient overlay for better text readability */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                              </div>
+                              <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+                                <h3 className="text-2xl font-bold text-white mb-1">{event.title}</h3>
+                                <div className="flex items-center text-white/90 text-sm">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                  </svg>
+                                  <span>{event.time}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex justify-between items-start mb-2">
+                              <div>
+                                <p className="text-gray-600 text-sm mb-2">{event.location}</p>
+                                <p className="text-gray-700">{event.description}</p>
+                              </div>
+                              {event.isKeyEvent && (
+                                <span 
+                                  className="text-white text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wide"
+                                  style={{ backgroundColor: schedule[1].accentColor }}
+                                >
+                                  Key Event
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
-                        <div className="flex justify-between items-start mb-2">
-                          <div>
-                            <p className="text-gray-600 text-sm mb-2">{schedule[1].events[1].location}</p>
-                            <p className="text-gray-700">{schedule[1].events[1].description}</p>
-                          </div>
-                          <span 
-                            className="text-white text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wide"
-                            style={{ backgroundColor: schedule[1].accentColor }}
-                          >
-                            Key Event
-                          </span>
-                        </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </>
               )}
             </div>

@@ -64,20 +64,20 @@ export default function RegisterPage() {
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Main Event</h2>
           <p className="text-2xl font-bold text-secondary mb-2">$50 <span className="text-base font-normal">/person</span></p>
-          <p className="text-gray-700 mb-4">Access to all main sessions. <span className="font-semibold text-green-700">Children under 10: Free</span></p>
+          <p className="text-gray-700 mb-4">Access to all main sessions. <span className="font-semibold text-green-700">Free admission for children 12 and under</span></p>
             <a href={zeffyLinks.mainEvent} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
         </div>
         {/* Banquet */}
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Banquet</h2>
-            <p className="text-2xl font-bold text-secondary mb-2">$150</p>
+            <p className="text-2xl font-bold text-secondary mb-2">$150 <span className="text-base font-normal">/person</span></p>
             <p className="text-gray-700 mb-4">Evening banquet. <span className="font-semibold text-green-700">Age 21 and above</span>. Includes gourmet dinner.</p>
             <a href={zeffyLinks.banquet} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-primary text-white rounded-lg font-semibold hover:bg-secondary transition">Buy</a>
         </div>
         {/* Matrimony */}
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Matrimony</h2>
-          <p className="text-2xl font-bold text-secondary mb-2">$200</p>
+          <p className="text-2xl font-bold text-secondary mb-2">$200 <span className="text-base font-normal">/family</span></p>
           <p className="text-gray-700 mb-4">Registration for Matrimony will open in September.</p>
           <div className="px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium text-center">
             Opens in September
@@ -86,7 +86,7 @@ export default function RegisterPage() {
         {/* Youth Banquet */}
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Youth Banquet</h2>
-          <div className="mb-2"></div>
+          <p className="text-2xl font-bold text-secondary mb-2">$ <span className="text-base font-normal">/person</span></p>
           <p className="text-gray-700 mb-6">First time ever. More details will be coming soon.</p>
           <div className="px-6 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium text-center">
             Coming Soon
