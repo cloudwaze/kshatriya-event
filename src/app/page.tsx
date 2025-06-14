@@ -518,7 +518,7 @@ export default function Home() {
                       <svg className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-green-700 font-medium">Children under 10: Free</span>
+                      <span className="text-green-700 font-medium">Free admission for children 12 and under</span>
                     </li>
                   </ul>
                   <a 

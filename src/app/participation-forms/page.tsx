@@ -161,25 +161,37 @@ export default function ParticipationFormsPage() {
                     <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Creative Competition: June 15, 2025</span>
+                    <span>Creative Competition: September 30</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Sports Registration: June 1, 2025</span>
+                    <span>Youth Sports: August 31</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Cultural Performance: May 15, 2025</span>
+                    <span>Men's Sports: August 31</span>
                   </li>
                   <li className="flex items-start">
                     <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Souvenir Submission: April 30, 2025</span>
+                    <span>Women's Sports: August 31</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Cultural Registration: August 31</span>
+                  </li>
+                  <li className="flex items-start">
+                    <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Souvenir Registration: October 31</span>
                   </li>
                 </ul>
               </div>
@@ -187,23 +199,23 @@ export default function ParticipationFormsPage() {
               <div className="bg-white p-8 rounded-xl shadow-md">
                 <h3 className="text-xl font-semibold text-primary mb-4">Requirements</h3>
                 <ul className="text-left space-y-3">
-                  <li className="flex items-start">
-                    <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <li className="flex items-center">
+                    <svg className="h-5 w-5 text-[#732424] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>All participants must be registered for the main event</span>
+                    <span>All participants must be registered for main event</span>
                   </li>
-                  <li className="flex items-start">
-                    <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <li className="flex items-center">
+                    <svg className="h-5 w-5 text-[#732424] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     <span>Age restrictions apply for certain activities</span>
                   </li>
-                  <li className="flex items-start">
-                    <svg className="h-5 w-5 text-[#732424] mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <li className="flex items-center">
+                    <svg className="h-5 w-5 text-[#732424] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <span>Submission of additional documents may be required</span>
+                    <span>Additional documents may be required</span>
                   </li>
                 </ul>
               </div>

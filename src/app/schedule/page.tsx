@@ -57,14 +57,6 @@ const schedule = [
       },
       {
         time: "Throughout the Day",
-        title: "Cultural Activities",
-        location: "",
-        description: "Various cultural performances and activities throughout the day.",
-        isKeyEvent: true,
-        image: "/kshatriya-event/images/cultutral_event.jpg"
-      },
-      {
-        time: "Throughout the Day",
         title: "Focused Events",
         location: "",
         description: "Additional focused events and activities. Further details will be shared later.",
@@ -93,6 +85,14 @@ const schedule = [
       {
         time: "Throughout the Day",
         title: "Main Event",
+        location: "",
+        description: "Various cultural performances and activities throughout the day.",
+        isKeyEvent: true,
+        image: "/kshatriya-event/images/main-event.jpg"
+      },
+      {
+        time: "Throughout the Day",
+        title: "Cultural Activities",
         location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
@@ -296,57 +296,112 @@ export default function Schedule() {
                   </div>
                 ))
               ) : (
-                // Day 2 - Single national event, but maintain timeline style
-                <div className="mb-8 relative">
-                  {/* Timeline dot - REMOVED */}
-                  
-                  {/* Event card - centered for single event */}
-                  <div 
-                    className="md:w-8/12 mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    style={{ borderLeft: `4px solid ${schedule[1].accentColor}` }}
-                  >
+                // Day 2 - Main Event and Cultural Activities
+                <>
+                  {/* Main Event - Original Display */}
+                  <div className="mb-8 relative">
                     <div 
-                      className="p-6 cursor-pointer"
-                      onClick={() => setExpandedEvent(expandedEvent === 0 ? null : 0)}
+                      className="md:w-8/12 mx-auto bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      style={{ borderLeft: `4px solid ${schedule[1].accentColor}` }}
                     >
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-bold text-gray-800">{schedule[1].events[0].title}</h3>
-                        <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[1].accentColor }}>
-                          Key Event
-                        </span>
-                      </div>
-                      
-                      <div className="flex items-center text-gray-600 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="font-mono">{schedule[1].events[0].time}</span>
-                      </div>
-                      
-                      <AnimatePresence>
-                        {expandedEvent === 0 && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <p className="text-gray-600">{schedule[1].events[0].description}</p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                      
-                      {expandedEvent !== 0 && (
-                        <div className="flex justify-between items-center">
-                          <p className="text-gray-500 text-sm">Click for details</p>
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
+                      <div 
+                        className="p-6 cursor-pointer"
+                        onClick={() => setExpandedEvent(expandedEvent === 0 ? null : 0)}
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <h3 className="text-xl font-bold text-gray-800">{schedule[1].events[0].title}</h3>
+                          <span className="text-white text-xs px-2 py-1 rounded-full uppercase" style={{ backgroundColor: schedule[1].accentColor }}>
+                            Key Event
+                          </span>
                         </div>
-                      )}
+                        
+                        <div className="flex items-center text-gray-600 mb-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="font-mono">{schedule[1].events[0].time}</span>
+                        </div>
+                        
+                        <AnimatePresence>
+                          {expandedEvent === 0 && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <p className="text-gray-600">{schedule[1].events[0].description}</p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        
+                        {expandedEvent !== 0 && (
+                          <div className="flex justify-between items-center">
+                            <p className="text-gray-500 text-sm">Click for details</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+
+                  {/* Cultural Activities */}
+                  <div className="mb-8 relative">
+                    {/* Timeline dot */}
+                    <div 
+                      className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full border-4 border-white shadow-md" 
+                      style={{ backgroundColor: schedule[1].accentColor }}
+                    ></div>
+                    
+                    {/* Event card */}
+                    <div 
+                      className="md:w-5/12 md:ml-auto md:pl-12 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      style={{ borderLeft: `4px solid ${schedule[1].accentColor}` }}
+                    >
+                      <div 
+                        className="p-6 cursor-pointer"
+                        onClick={() => setExpandedEvent(expandedEvent === 1 ? null : 1)}
+                      >
+                        <div className="relative h-48 mb-4 rounded-lg overflow-hidden group">
+                          <div 
+                            className="absolute inset-0 bg-cover bg-center transform transition-transform duration-300 group-hover:scale-105"
+                            style={{ 
+                              backgroundImage: `url(${schedule[1].events[1].image})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center top'
+                            }}
+                          >
+                            {/* Gradient overlay for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+                            <h3 className="text-2xl font-bold text-white mb-1">{schedule[1].events[1].title}</h3>
+                            <div className="flex items-center text-white/90 text-sm">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span>{schedule[1].events[1].time}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-start mb-2">
+                          <div>
+                            <p className="text-gray-600 text-sm mb-2">{schedule[1].events[1].location}</p>
+                            <p className="text-gray-700">{schedule[1].events[1].description}</p>
+                          </div>
+                          <span 
+                            className="text-white text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wide"
+                            style={{ backgroundColor: schedule[1].accentColor }}
+                          >
+                            Key Event
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
             
