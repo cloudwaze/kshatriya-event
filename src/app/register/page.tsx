@@ -60,6 +60,31 @@ export default function RegisterPage() {
       </div>
       {/* Event Packages Grid */}
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Important Zeffy Fee Notice */}
+        <div className="col-span-1 md:col-span-2 mb-8">
+          <div className="relative bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 shadow-lg animate-pulse">
+            <div className="relative flex items-start">
+              <div className="flex-shrink-0 mr-4">
+                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center animate-bounce">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 13.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-red-800 mb-3 flex items-center">
+                  <span className="inline-block w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
+                  Important Ticket Info
+                </h3>
+                <p className="text-red-700 font-medium text-base leading-relaxed">
+                  <strong>Zeffy</strong>, our ticketing platform, automatically adds a suggested <strong>15–25% fee</strong> to support their services. 
+                  This contribution is <strong className="text-red-800">completely optional</strong>. To remove it, select the <strong className="bg-yellow-200 px-1 rounded">"Other"</strong> option at checkout and enter <strong className="bg-yellow-200 px-1 rounded">"0"</strong> before completing your purchase.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Main Event */}
         <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center">
           <h2 className="text-xl font-semibold text-primary mb-2">Main Event</h2>
@@ -155,7 +180,7 @@ export default function RegisterPage() {
                       <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Support Our Community</span>
                       <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
                       <p className="text-lg text-gray-700 mb-6">
-                        Support our Community with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
+                        Your generous contribution will play a key role in creating a meaningful experience for the Kshatriya community and supporting the organization's future endeavors.
                       </p>
                       
                       <div className="bg-green-50 rounded-lg p-4 mb-6">

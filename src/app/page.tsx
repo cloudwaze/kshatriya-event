@@ -270,7 +270,7 @@ export default function Home() {
                     <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-2">Support Our Community</span>
                     <h2 className="text-3xl font-bold text-gray-900 mb-4">Make a Donation</h2>
                     <p className="text-lg text-gray-700 mb-6">
-                      Support our Community with a donation of any amount. Your contribution helps us create a memorable experience for the Kshatriya community and supports our cultural initiatives.
+                      Your generous contribution will play a key role in creating a meaningful experience for the Kshatriya community and supporting the organization's future endeavors.
                     </p>
                     
                     <div className="bg-green-50 rounded-lg p-4 mb-6">
