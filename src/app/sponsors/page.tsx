@@ -70,13 +70,13 @@ const zeffyLinks = {
 
 export default function SponsorsPage() {
   return (
-    <PageLayout maxWidth="full">
+    <PageLayout maxWidth="full" className="!p-0">
       {/* Hero section with background image and overlay */}
       <div className="relative bg-[#732424] text-white">
         <div className="absolute inset-0 bg-gradient-to-r from-[#732424] to-[#9E3030] opacity-90"></div>
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] bg-[length:20px_20px]"></div>
         
-        <div className="relative container mx-auto px-4 py-16 md:py-28">
+        <div className="relative px-4 py-16 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl sm:text-6xl font-bold mb-6">Partner With Us</h1>
             <p className="text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
@@ -109,7 +109,7 @@ export default function SponsorsPage() {
 
       {/* Tax Exemption Information */}
       <div className="bg-green-50 py-6">
-        <div className="container mx-auto px-4">
+        <div className="px-4">
           <div className="max-w-5xl mx-auto text-center">
             <div className="flex items-center justify-center mb-3">
               <svg className="h-6 w-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@ export default function SponsorsPage() {
 
       {/* Sponsorship packages section */}
       <section id="packages" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="px-4">
           <div className="text-center mb-16">
             <span className="inline-block px-3 py-1 bg-red-50 text-[#732424] rounded-full text-sm font-medium mb-3">Sponsorship Packages</span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Level of Partnership</h2>
@@ -152,9 +152,13 @@ export default function SponsorsPage() {
                     <span className="inline-block w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
                     Important Ticket Info
                   </h3>
-                  <p className="text-red-700 font-medium text-base leading-relaxed">
+                  <p className="text-red-700 font-medium text-base leading-relaxed mb-4">
                     <strong>Zeffy</strong>, our ticketing platform, automatically adds a suggested <strong>15–25% fee</strong> to support their services. 
                     This contribution is <strong className="text-red-800">completely optional</strong>. To remove it, select the <strong className="bg-yellow-200 px-1 rounded">"Other"</strong> option at checkout and enter <strong className="bg-yellow-200 px-1 rounded">"0"</strong> before completing your purchase.
+                  </p>
+                  <p className="text-red-700 font-medium text-base leading-relaxed">
+                    Please note there are different payment methods available, such as Zelle, PayPal, ACH and check. 
+                    After you click &apos;Buy&apos;, select &apos;More Details&apos; to view different payments information.
                   </p>
                 </div>
               </div>
@@ -209,7 +213,7 @@ export default function SponsorsPage() {
 
       {/* Make a Donation Section - Same as Home Page */}
       <section className="py-16 bg-gradient-to-r from-[#732424]/5 to-[#732424]/10">
-        <div className="container mx-auto px-4">
+        <div className="px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
               <div className="p-8">

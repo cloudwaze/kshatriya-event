@@ -22,6 +22,28 @@ const nextConfig = {
   output: 'export',
   // Repository name for GitHub Pages
   basePath: '/kshatriya-event',
+  // Add headers to prevent iframe caching
+  headers: async () => {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-cache, no-store, must-revalidate',
+          },
+          {
+            key: 'Pragma',
+            value: 'no-cache',
+          },
+          {
+            key: 'Expires',
+            value: '0',
+          },
+        ],
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig; 
