@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import CountdownTimer from '../components/CountdownTimer';
 import { PageLayout } from '../components/ui/PageLayout';
+import { PaymentInfo } from '../components/ui/PaymentInfo';
 
 const zeffyLinks = {
   mainEvent: 'https://www.zeffy.com/ticketing/cultural-event-tickets-national-event--2025',
@@ -255,6 +256,9 @@ export default function Home() {
       <section className="py-16 bg-gradient-to-r from-[#732424]/5 to-[#732424]/10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            {/* Payment Options Information */}
+            <PaymentInfo className="mb-8" compact />
+            
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
               <div className="p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">

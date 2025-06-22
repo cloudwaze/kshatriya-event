@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { PageLayout } from '../../components/ui/PageLayout';
+import { PaymentInfo } from '../../components/ui/PaymentInfo';
 
 // Sponsorship packages
 const sponsorshipTiers = [
@@ -136,6 +137,11 @@ export default function SponsorsPage() {
             </p>
           </div>
           
+          {/* Payment Options Information for Sponsorship */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <PaymentInfo compact />
+          </div>
+          
           {/* Important Zeffy Fee Notice */}
           <div className="max-w-4xl mx-auto mb-12">
             <div className="relative bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 shadow-lg animate-pulse">
@@ -152,13 +158,9 @@ export default function SponsorsPage() {
                     <span className="inline-block w-3 h-3 bg-red-500 rounded-full mr-2 animate-ping"></span>
                     Important Ticket Info
                   </h3>
-                  <p className="text-red-700 font-medium text-base leading-relaxed mb-4">
+                  <p className="text-red-700 font-medium text-base leading-relaxed">
                     <strong>Zeffy</strong>, our ticketing platform, automatically adds a suggested <strong>15–25% fee</strong> to support their services. 
                     This contribution is <strong className="text-red-800">completely optional</strong>. To remove it, select the <strong className="bg-yellow-200 px-1 rounded">"Other"</strong> option at checkout and enter <strong className="bg-yellow-200 px-1 rounded">"0"</strong> before completing your purchase.
-                  </p>
-                  <p className="text-red-700 font-medium text-base leading-relaxed">
-                    Please note there are different payment methods available, such as Zelle, PayPal, ACH and check. 
-                    After you click &apos;Buy&apos;, select &apos;More Details&apos; to view different payments information.
                   </p>
                 </div>
               </div>
@@ -215,6 +217,9 @@ export default function SponsorsPage() {
       <section className="py-16 bg-gradient-to-r from-[#732424]/5 to-[#732424]/10">
         <div className="px-4">
           <div className="max-w-4xl mx-auto">
+            {/* Payment Options Information for Donation */}
+            <PaymentInfo className="mb-8" compact />
+            
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
               <div className="p-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
