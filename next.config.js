@@ -21,7 +21,7 @@ const nextConfig = {
   },
   output: 'export',
   // Repository name for GitHub Pages
-  basePath: '/kshatriya-event',
+  basePath: "",
   // Add headers to prevent iframe caching
   headers: async () => {
     return [
