@@ -29,7 +29,7 @@ const schedule = [
         location: "",
         description: "Start your day with an invigorating yoga session to energize your body and mind.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/yoga.jpg"
+        image: "/images/yoga.jpg"
       },
       {
         time: "9:00 AM - 3:00 PM",
@@ -37,7 +37,7 @@ const schedule = [
         location: "",
         description: "Registration starts at 9:00 AM. A thoughtfully organized event to build meaningful connections within our community.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/matrimony.jpg"
+        image: "/images/matrimony.jpg"
       },
       {
         time: "3:00 PM - 5:00 PM",
@@ -45,7 +45,7 @@ const schedule = [
         location: "",
         description: "Connect with successful entrepreneurs and gain valuable insights for your business journey.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/entrepreneurship.jpg"
+        image: "/images/entrepreneurship.jpg"
       },
       {
         time: "6:00 PM - 10:00 PM",
@@ -53,7 +53,7 @@ const schedule = [
         location: "",
         description: "An elegant dinner with cultural performances and community celebration.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/banquet.jpg"
+        image: "/images/banquet.jpg"
       },
       {
         time: "Throughout the Day",
@@ -61,7 +61,7 @@ const schedule = [
         location: "",
         description: "Additional focused events and activities. Further details will be shared later.",
         isKeyEvent: false,
-        image: "/kshatriya-event/images/focusedevents.jpg"
+        image: "/images/focusedevents.jpg"
       }
     ],
   },
@@ -88,7 +88,7 @@ const schedule = [
         location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/main-event.jpg"
+        image: "/images/main-event.jpg"
       },
       {
         time: "Throughout the Day",
@@ -96,7 +96,7 @@ const schedule = [
         location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
-        image: "/kshatriya-event/images/cultutral_event.jpg"
+        image: "/images/cultutral_event.jpg"
       },
       {
         time: "Throughout the Day",
@@ -104,7 +104,7 @@ const schedule = [
         location: "",
         description: "Additional focused events and activities. Further details will be shared later.",
         isKeyEvent: false,
-        image: "/kshatriya-event/images/focusedevents.jpg"
+        image: "/images/focusedevents.jpg"
       }
     ],
   }
@@ -181,7 +181,7 @@ export default function Schedule() {
                     {/* Background image */}
                     <div className="absolute inset-0">
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || '/kshatriya-event'}/images/${activeDay === 0 ? 'cultutral_event.jpeg' : 'main-event.jpeg'}`}
+                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/${activeDay === 0 ? 'cultutral_event.jpeg' : 'main-event.jpeg'}`}
                         alt={activeDay === 0 ? "Cultural Events" : "Main Event"}
                         fill
                         style={{ objectFit: 'cover', objectPosition: 'center center' }}
