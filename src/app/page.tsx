@@ -139,7 +139,7 @@ export default function Home() {
                 {/* Image Section */}
                 <div className="relative h-[400px] md:h-auto">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/hotel.jpg`}
+                    src="/images/hotel.jpg"
                     alt="Frisco Embassy Suites Hotel"
                     fill
                     className="object-cover"
@@ -228,12 +228,12 @@ export default function Home() {
                     muted
                     loop
                     playsInline
-                    poster={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/main-event.jpg`}
+                    poster="/images/main-event.jpg"
                     preload="metadata"
                     ref={videoRef}
                   >
                     <source 
-                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/home_video.mp4`} 
+                      src="/images/home_video.mp4" 
                       type="video/mp4" 
                     />
                     Your browser does not support the video tag.
@@ -398,7 +398,7 @@ export default function Home() {
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/banquet.jpg`}
+                    src="/images/banquet.jpg"
                     alt="Gala Banquet"
                     width={600}
                     height={400}
@@ -418,7 +418,7 @@ export default function Home() {
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/matrimony.jpg`}
+                    src="/images/matrimony.jpg"
                     alt="Matrimony Event"
                     width={600}
                     height={400}
@@ -438,7 +438,7 @@ export default function Home() {
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/cultutral_event.jpg`}
+                    src="/images/cultutral_event.jpg"
                     alt="Cultural Activities"
                     width={600}
                     height={400}
@@ -458,7 +458,7 @@ export default function Home() {
               <div className="group">
                 <div className="relative overflow-hidden rounded-xl shadow-lg mb-6">
               <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/entrepreneurship.jpg`}
+                    src="/images/entrepreneurship.jpg"
                     alt="Networking Opportunities"
                     width={600}
                     height={400}

@@ -96,16 +96,16 @@ const schedule = [
         location: "",
         description: "Various cultural performances and activities throughout the day.",
         isKeyEvent: true,
-        image: "/images/cultutral_event.jpg"
-      },
-      {
-        time: "Throughout the Day",
-        title: "Focused Events",
-        location: "",
-        description: "Additional focused events and activities. Further details will be shared later.",
-        isKeyEvent: false,
-        image: "/images/focusedevents.jpg"
-      }
+                image: "/images/cultutral_event.jpg"
+        },
+        {
+          time: "Throughout the Day",
+          title: "Focused Events",
+          location: "",
+          description: "Additional focused events and activities. Further details will be shared later.",
+          isKeyEvent: false,
+          image: "/images/focusedevents.jpg"
+        }
     ],
   }
 ];
@@ -181,7 +181,7 @@ export default function Schedule() {
                     {/* Background image */}
                     <div className="absolute inset-0">
                       <Image
-                        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/${activeDay === 0 ? 'cultutral_event.jpeg' : 'main-event.jpeg'}`}
+                        src={`/images/${activeDay === 0 ? 'cultutral_event.jpg' : 'main-event.jpg'}`}
                         alt={activeDay === 0 ? "Cultural Events" : "Main Event"}
                         fill
                         style={{ objectFit: 'cover', objectPosition: 'center center' }}
